@@ -1,0 +1,14 @@
+#subHeaderSubTitle{
+    display: inline-block;
+}    
+
+#subHeader {
+    border: 2px solid black;
+    height: 40%;
+    background-color: #FFDEAD;
+    font-family: "Comic Sans", Times;
+}
+
+#subHeaderSubTitle {
+    padding-left: 85px;
+}
