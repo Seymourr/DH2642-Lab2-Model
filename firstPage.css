@@ -23,8 +23,31 @@ html {
     bottom: 20%; 
 }
 
+#boxContainerParent {
+    padding-left: 50px; 
+    width:100%;
+}
+
+#boxTitle {
+    font-size: 300%
+}
+
 #boxLine{
     border-bottom: 5px solid black;
+}
+
+#boxText {
+    font-size: 200%;
+    font-family: "Comic Sans", Times;
+}
+
+#lowerBoxContent {
+    margin-top: 10%;
+}
+#buttonPreText {
+    font-size: 200%;
+    font-family: "Comic Sans", Times; 
+    font-style: italic;
 }
 
 #startButton{
