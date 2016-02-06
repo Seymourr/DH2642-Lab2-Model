@@ -5,6 +5,7 @@ html, body {
 
 #header {
     background-color: #ededed;
+    border: 1px solid black;
     padding-left: 50px;
     font-family: "Comic Sans", Times;
 }

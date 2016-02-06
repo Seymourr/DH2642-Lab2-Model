@@ -2,3 +2,12 @@ body {
     background-image: url("images/firstpage.jpg");
     background-size: 100%;
 }
+
+html {
+    height: 100%
+}
+#header{
+    opacity: 0.8;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+    background-color: #FFDEAD;
+}
