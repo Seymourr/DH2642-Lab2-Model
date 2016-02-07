@@ -34,6 +34,21 @@ html, body {
     border-style: hidden solid hidden hidden;
 }
 
+#left-pane input {
+    width: 40px;
+    margin-bottom: 10px;
+}
+
+#left-pane p {
+    font-weight: bold;
+    text-align: right;
+}
+
+thead {
+    font-weight: bold;
+    background-color: #ededed;
+}
+
 #right-pane {
     height: 80%;
 }

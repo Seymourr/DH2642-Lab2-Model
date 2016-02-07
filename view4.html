@@ -24,28 +24,32 @@
         <div id="content-pane">
             <div id="left-pane" class="col-lg-2">
                 <h3>My Dinner</h3>
-                <p>People</p>
-                <input type="number">
-                <table>
-                    <tr>
-                        <td></td>
-                        <td>Dish Name</td>
-                        <td>Cost</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Lasagne</td>
-                        <td>77.20</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>Pending</td>
-                        <td>0.00</td>
-                    </tr>
+                <label for="guest-number">People</label>
+                <input id="guest-number" type="number">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <td></td>
+                            <td>Dish Name</td>
+                            <td>Cost</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>4</td>
+                            <td>Lasagne</td>
+                            <td>77.20</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Pending</td>
+                            <td>0.00</td>
+                        </tr>
+                    </tbody>
                 </table>
                 <hr>
                 <p>SEK 77.20</p>
-                <button>Confirm Dinner</button>
+                <button class="btn-primary">Confirm Dinner</button>
             </div>
 
             <div id="right-pane" class="col-lg-10">
