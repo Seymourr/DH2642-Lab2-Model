@@ -49,20 +49,24 @@
                 </table>
                 <hr>
                 <p>SEK 77.20</p>
-                <button class="btn-primary">Confirm Dinner</button>
+                <button class="btn btn-primary">Confirm Dinner</button>
             </div>
 
             <div id="right-pane" class="col-lg-10">
                 <div id="search-pane" class="row">
                     <h2>Select Dish</h2>
                     <hr>
-                    <form id="search-form">
-                        <input type="text">
-                    </form>
-                    <button type="submit" form="search-form" value="Enter keywords">Search</button>
-                    <select>
+                    <div class="row">
+                    <div class="form-group col-lg-6">
+                        <form id="search-form">
+                            <input type="text" value="Enter keywords">
+                            <input id="search-button" type="submit" form="search-form" class="btn" value="Search">
+                        </form>
+                    </div>
+                    <select class="form-control col-lg-6">
                         <option>Main</option>
                     </select>
+                    </div>
                 </div>
 
                 <div id="browsing-pane" class="row">
