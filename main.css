@@ -37,13 +37,16 @@ html, body {
 #right-pane {
     float: right;
     width: 100%;
+    height: 100%;
 }
 
 #search-pane {
     background-color: #ffe499;
+    border-bottom-style: solid;
 }
 
 #browsing-pane {
+    height: 80%;
     overflow: auto;
 }
 
