@@ -23,13 +23,9 @@
               <h4 id="subtitle">From the best chefs in the world directly into your kitchen</h4>
           </div>
       </div>
-    </div>
-
-   <div class="container-fluid">
       <div id="subHeader" class="row">
         <div class="col-xs-12 col-md-8">
             <h1 id="subHeaderSubTitle">My dinner: <span id="numberOfPeople">0</span> people</h1>
-           
         </div>
          <div id="crumbs">
               <ul>
@@ -37,9 +33,36 @@
               </ul>
             </div>
       </div>
+
+      <div id="itemRow" class="row">
+        <div id="preCourse" class="col-xs-1 col-xs-offset-4">
+         <img id= "preCourseImage" src="images/toast.jpg" class= "img-responsive" alt="Toast" style="border: 2px solid black;">
+          <p id="preCourseFood">Appertizer: Toast</p>
+          <h6>Some cost</h6>
+        </div>
+          <div id="mainCourse"class="col-xs-1">
+          <img id= "mainCourseImage" src="images/meatballs.jpg" class= "img-responsive" alt="Meatballs" style="border: 2px solid black;">
+          <p id="mainCourseFood">Main: Meatballs</p>
+           <h6>Some cost</h6>
+        </div>
+          <div id="dessert" class="col-xs-1">
+          <img id= "dessertImage" src="images/icecream.jpg" class= "img-responsive" alt="Icecream" style="border: 2px solid black;">
+          <p id="dessertFood">Dessert: Icecream</p>
+          <h6>Some cost</h6>
+        </div>
+        <div id="totalMenu" class="col-xs-2">
+          <div id="verticalLine">Total: </div>
+        </div>
+      </div>
+      <hr style="width: 80%; border: 1px solid black;">
+      <div id= "proceedRow" class="row">
+        <div class="col-xs-6 col-xs-offset-4">
+          <button id= "printButton" type="button">Print full recipe</button>
+        </div>
+      </div>
     </div>
     
-  
+   
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
