@@ -31,7 +31,7 @@ html, body {
 
 #left-pane {
     height: 100%;
-    border-style: hidden solid hidden hidden;
+    border-right: 1px solid black;
 }
 
 #left-pane input {
@@ -55,7 +55,7 @@ thead {
 
 #search-pane {
     background-color: #ffe499;
-    border-bottom-style: solid;
+    border-bottom: 1px solid black;
 }
 
 #search-pane select {
