@@ -11,7 +11,7 @@ html, body {
     background-color: #ededed;
     border: 1px solid black;
     padding-left: 50px;
-    font-family: "Comic Sans", Times;
+    font-family: "Comic Sans", Times, serif;
 }
 
 #title {
@@ -44,7 +44,7 @@ html, body {
 }
 
 #browsing-pane {
-    overflow: scroll;
+    overflow: auto;
     height: 100%;
 }
 
