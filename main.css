@@ -67,6 +67,11 @@ thead {
     height: 100%;
 }
 
+#ingredient-list {
+    background-color: #ffe499;
+    border: solid;
+}
+
 /* Nice formatting from https://css-tricks.com/examples/hrs/ */
 hr {
     border: 0px;
