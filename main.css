@@ -22,17 +22,21 @@ html, body {
 }
 
 #content-pane {
-    height: 90%;
+    height: 100%;
+    margin-left: 200px;
 }
 
 #left-pane {
     float: left;
-    width: 15%;
+    width: 200px;
+    height: 100%;
+    margin-left: -200px;
+    border-style: hidden solid hidden hidden;
 }
 
 #right-pane {
     float: right;
-    width: 85%;
+    width: 100%;
 }
 
 #search-pane {
