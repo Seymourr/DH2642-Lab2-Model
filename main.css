@@ -27,7 +27,7 @@ html, body {
 
 #view1 #actionBox{
     background-color: rgba(237,237,237,0.8);
-    filter: alpha(obacity=(20)); /* For IE8 and earlier */
+    filter: alpha(opacity=20); /* For IE8 and earlier */
     width: 900px;
     height: 400px;
     position: fixed;
