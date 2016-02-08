@@ -60,7 +60,7 @@ var DinnerModel = function() {
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		var dish = getDish(id);
-		var currentDish = getSelectedDish(dish['type'];
+		var currentDish = getSelectedDish(dish['type']);
 
 		if(currentDish !== null){
 			removeDishFromMenu(currentDish['id']);
