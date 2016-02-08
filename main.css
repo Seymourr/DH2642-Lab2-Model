@@ -25,6 +25,53 @@ html, body {
 	display: inline-block;
 }
 
+#view1 #actionBox{
+    background-color: rgba(237,237,237,0.8);
+    filter: alpha(obacity=(20)); /* For IE8 and earlier */
+    width: 900px;
+    height: 400px;
+    position: fixed;
+    left: 0%;
+    bottom: 20%; 
+}
+
+#view1  #boxContainerParent {
+    padding-left: 50px; 
+    width:100%;
+}
+
+#view1  #boxTitle {
+    font-size: 300%
+}
+
+#view1  #boxLine{
+    border-bottom: 5px solid black;
+}
+
+#view1 #boxText {
+    font-size: 200%;
+    font-family: "Comic Sans", Times;
+}
+
+#view1 #lowerBoxContent {
+    margin-top: 10%;
+}
+#view1 #buttonPreText {
+    font-size: 200%;
+    font-family: "Comic Sans", Times; 
+    font-style: italic;
+}
+
+#view1 #startButton{
+    width: 50%;
+    height: 50px;
+    border: 2px solid black;
+    font-size: 20px;
+    font-weight: bold;
+    color:black;
+    background: rgba(255, 102, 0, 1);
+}
+
 #content-pane {
     height: 90%;
 }

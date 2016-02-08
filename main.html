@@ -24,7 +24,17 @@
       </div>
     
 
-      <div id="view1" style="display:none">
+      <div id="view1" style="display:block">
+        <script>
+        if(document.getElementById("view1").style.display != 'none'){
+          document.body.style.backgroundImage = "url('images/firstpage.jpg')";
+          document.body.style.backgroundSize = "100%";
+          document.body.style.position = "static";
+          document.getElementById("header").style.opacity = "0.8";
+          document.getElementById("header").style.filter = "alpha(opacity=40)";
+          document.getElementById("header").style.backgroundColor = "#FFDEAD";
+        } 
+        </script>
         <div class="container" id = "actionBox" >
           <div class="row">
             <div class="col-md-12">
@@ -161,7 +171,7 @@
             </div>
           </div>
       </div>
-      <div id="view5" style="display:block">
+      <div id="view5" style="display:none">
         <!--Note: Only subtitlebar shown here. not a real view-->
         <div id="subHeader" class="row">
           <div class="col-xs-8 col-xs-offset-1">
@@ -208,7 +218,7 @@
         </div>
       </div>
 
-      <div id="view7" style="display:block">   
+      <div id="view7" style="display:none">   
         <div class="row itemRow">
           <div class="prep col-xs-6 col-sm-3 col-lg-2 col-lg-offset-2">
             <div class="image-box-no-text">
