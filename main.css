@@ -88,6 +88,7 @@ hr {
 
 .image-box img {
     border-bottom: solid;
+    width: 100%;
 }
 
 .image-box h3 {
