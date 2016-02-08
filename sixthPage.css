@@ -13,21 +13,18 @@
     padding-left: 85px;
 }
 
-#prepBody {
 
-}
-
-#item-1 {
+.itemRow #item-1 {
     min-width: 190px;
     min-height: 300px;
 }
 
-#item-1-text {
+.itemRow  #item-1-text {
     min-width: 400px;
     min-height: 300px;
 }
 
-#item-1-prep-text {
+.itemRow #item-1-prep-text {
     min-width: 300px;
     position: relative;
 }
