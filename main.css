@@ -65,6 +65,7 @@ thead {
 #browsing-pane {
     overflow: auto;
     height: 100%;
+    padding: 10px;
 }
 
 #ingredient-list {
@@ -77,4 +78,18 @@ hr {
     border: 0px;
     height: 1px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.image-box {
+    border: solid;
+    max-width: 150px;
+    background-color: #ededed;
+}
+
+.image-box img {
+    border-bottom: solid;
+}
+
+.image-box h3 {
+    text-align: center;
 }
