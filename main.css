@@ -32,11 +32,11 @@ html, body {
     height: 400px;
     position: fixed;
     left: 0%;
-    bottom: 20%; 
+    bottom: 20%;
 }
 
 #view1  #boxContainerParent {
-    padding-left: 50px; 
+    padding-left: 50px;
     width:100%;
 }
 
@@ -58,7 +58,7 @@ html, body {
 }
 #view1 #buttonPreText {
     font-size: 200%;
-    font-family: "Comic Sans", Times; 
+    font-family: "Comic Sans", Times;
     font-style: italic;
 }
 
@@ -96,7 +96,7 @@ thead {
     background-color: #ededed;
 }
 
-#right-pane {
+#right-pane, #right-pane-select {
     height: 80%;
 }
 
@@ -161,7 +161,7 @@ hr {
 
 #view5 #subHeaderSubTitle{
     display: inline-block;
-}    
+}
 
 #view5 #subHeader {
     border: 2px solid black;
