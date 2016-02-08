@@ -9,32 +9,27 @@
     font-family: "Comic Sans", Times;
 }
 
-#subHeaderSubTitle {
-    padding-left: 85px;
-}
+
 
 #itemRow {
     padding-top: 5%;
 }
 
-#itemRow p {
+#preCourse, #mainCourse, #dessert {
     background-color: lightgrey;
     height: 5%;
     border: 2px solid black;
     text-align: center;
     padding-top: 5px;
-
 }
 
 #verticalLine {
     border-left: medium black solid;
-    height: 195px;
-    padding-top: 168px;
+    padding-top: 120%;
     padding-left: 20px;
     font-family: "Comic Sans", Times;
     font-size: 200%;
     font-weight: bold;
-
 }
 
 #proceedRow {
@@ -63,7 +58,8 @@ h6 {
     font-weight: bold;
 }
 
-#preCourse, #mainCourse, #dessert {
-    min-width: 140px;
-    min-height: 140px;
+
+
+img {
+    width: 100%;
 }

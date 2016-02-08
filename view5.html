@@ -24,37 +24,40 @@
           </div>
       </div>
       <div id="subHeader" class="row">
-        <div class="col-xs-12 col-md-8">
+        <div class="col-xs-8 col-xs-offset-1">
             <h1 id="subHeaderSubTitle">My dinner: <span id="numberOfPeople">0</span> people</h1>
         </div>
-         <div id="crumbs">
-              <ul>
-                <li ><a href="#">Go back and edit dinner</a></li>
-              </ul>
+         <div class="col-xs-3 offset-" id="crumbs">
+         <button type="button" class="btn btn-default btn-arrow-left">Go back and edit dinner</button>
             </div>
       </div>
-
       <div id="itemRow" class="row">
-        <div id="preCourse" class="col-xs-1 col-xs-offset-3">
-         <img id= "preCourseImage" src="images/toast.jpg" class= "img-responsive" alt="Toast" style="border: 2px solid black;">
-          <p id="preCourseFood">Toast</p>
-          <h6>Some cost</h6>
+      <div class="course col-xs-6 col-sm-3 col-lg-2 col-lg-offset-2">
+                        <div class="image-box">
+                            <img src="images/toast.jpg">
+                            <h3>Toast</h3>
+                        </div>
+                       <h6>Some Cost </h6>
+      </div>
+        <div class="course col-xs-6 col-sm-3 col-lg-2">
+                        <div class="image-box">
+                            <img src="images/toast.jpg">
+                            <h3>Toast</h3>
+                        </div>
+                       <h6>Some Cost </h6>
+      </div>
+       <div class="course col-xs-6 col-sm-3 col-lg-2">
+                        <div class="image-box">
+                            <img src="images/toast.jpg">
+                            <h3>Toast</h3>
+                        </div>
+                       <h6>Some Cost </h6>
         </div>
-          <div id="mainCourse"class="col-xs-1 col-xs-offset-1">
-          <img id= "mainCourseImage" src="images/meatballs.jpg" class= "img-responsive" alt="Meatballs" style="border: 2px solid black;">
-          <p id="mainCourseFood">Meatballs</p>
-           <h6>Some cost</h6>
-        </div>
-          <div id="dessert" class="col-xs-1 col-xs-offset-1">
-          <img id= "dessertImage" src="images/icecream.jpg" class= "img-responsive" alt="Icecream" style="border: 2px solid black;">
-          <p id="dessertFood">Icecream</p>
-          <h6>Some cost</h6>
-        </div>
-        <div id="totalMenu" class="col-xs-">
+        <div id="totalMenu" class="course col-xs-6 col-sm-3 col-lg-2">
           <div id="verticalLine">Total: </div>
         </div>
       </div>
-      <hr style="width: 80%; border: 1px solid black;">
+      <hr>
       <div id= "proceedRow" class="row">
         <div class="col-xs-6 col-xs-offset-4">
          <button id= "printButton" type="button">Print full recipe</button>

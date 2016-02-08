@@ -82,8 +82,9 @@ hr {
 
 .image-box {
     border: solid;
-    max-width: 150px;
+  
     background-color: #ededed;
+
 }
 
 .image-box img {
