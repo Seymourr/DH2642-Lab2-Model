@@ -26,16 +26,6 @@
 
     <!-- Splash screen -->
     <div id="view1" style="display:none">
-        <script>
-            if (document.getElementById("view1").style.display != 'none') {
-                document.body.style.backgroundImage = "url('images/firstpage.jpg')";
-                document.body.style.backgroundSize = "100%";
-                document.body.style.position = "static";
-                document.getElementById("header").style.opacity = "0.8";
-                document.getElementById("header").style.filter = "alpha(opacity=40)";
-                document.getElementById("header").style.backgroundColor = "#FFDEAD";
-            }
-        </script>
         <div class="container" id="actionBox">
             <div class="row">
                 <div class="col-md-12">
@@ -341,7 +331,7 @@
 <!-- The application JavaScript code -->
 <script src="js/app.js"></script>
 <script src="js/model/dinnerModel.js"></script>
-<script src="js/view/exampleView.js"></script>
+<script src="js/view/splashView.js"></script>
 <script src="js/view/exampleViewController.js"></script>
 </body>
 </html>
