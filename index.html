@@ -78,7 +78,7 @@
                     <td>Cost</td>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody id="table-body">
                 <tr>
                     <td>4</td>
                     <td>Lasagne</td>
@@ -92,7 +92,7 @@
                 </tbody>
             </table>
             <hr>
-            <p>SEK 77.20</p>
+            <p id="total-cost">SEK 77.20</p>
             <button class="btn btn-primary">Confirm Dinner</button>
         </div>
     </div>
@@ -106,7 +106,7 @@
                 <div class="row">
                     <div class="form-group col-lg-6">
                         <form id="search-form">
-                            <input type="text" value="Enter keywords">
+                            <input id="search-text" type="text" value="Enter keywords">
                             <input id="search-button" type="submit" form="search-form" class="btn" value="Search">
                         </form>
                     </div>
@@ -332,6 +332,7 @@
 <script src="js/app.js"></script>
 <script src="js/model/dinnerModel.js"></script>
 <script src="js/view/splashView.js"></script>
+<script src="js/view/sidebarView.js"></script>
 <script src="js/view/exampleViewController.js"></script>
 </body>
 </html>
