@@ -255,7 +255,7 @@
                 <h1 id="subHeaderSubTitle">My dinner: <span id="numberOfPeople">0</span> people</h1>
             </div>
             <div class="col-xs-3 offset-" id="crumbs">
-                <button type="button" class="btn btn-default btn-arrow-left">Go back and edit dinner</button>
+                <button id ="goBackButton"type="button" class="btn btn-default btn-arrow-left">Go back and edit dinner</button>
             </div>
         </div>
     </div>
@@ -263,21 +263,21 @@
     <!-- Dinner overview screen -->
     <div id="view6" style="display:none">
         <div id="itemRow" class="row">
-            <div class="course col-xs-6 col-sm-3 col-lg-2 col-lg-offset-2">
+            <div id= "starter" class="course col-xs-6 col-sm-3 col-lg-2 col-lg-offset-2">
                 <div class="image-box">
                     <img src="images/toast.jpg">
                     <h3>Toast</h3>
                 </div>
                 <h6>Some Cost </h6>
             </div>
-            <div class="course col-xs-6 col-sm-3 col-lg-2">
+            <div id= "mainDish" class= "course col-xs-6 col-sm-3 col-lg-2">
                 <div class="image-box">
                     <img src="images/toast.jpg">
                     <h3>Toast</h3>
                 </div>
                 <h6>Some Cost </h6>
             </div>
-            <div class="course col-xs-6 col-sm-3 col-lg-2">
+            <div id= "dessert" class= "course col-xs-6 col-sm-3 col-lg-2">
                 <div class="image-box">
                     <img src="images/toast.jpg">
                     <h3>Toast</h3>
@@ -285,7 +285,7 @@
                 <h6>Some Cost</h6>
             </div>
             <div class="course col-xs-6 col-sm-3 col-lg-2">
-                <div class="verticalLine">Total:</div>
+                <div id= "totalDiv" class="verticalLine">Total:</div>
             </div>
         </div>
         <hr>
