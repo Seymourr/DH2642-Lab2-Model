@@ -31,6 +31,7 @@ var DinnerModel = function() {
 		return selectedDishes;
 	}
 
+
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
 		//TODO: Concatenate similar ingredients
@@ -42,6 +43,16 @@ var DinnerModel = function() {
 			}
 		}
 		return ingredientList;
+	}
+
+	//Return the cost of a certain dish 
+	this.getDishPrice = function(id) {
+		var dish = getDish(id);
+		var totalPrice = 0;
+		for(i = 0; i < dish['ingredients]'].length; i++){
+			totalPrice += dish['ingredients'][i]['price'];
+		}
+		return totalPrice;
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
