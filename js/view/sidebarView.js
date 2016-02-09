@@ -1,6 +1,7 @@
 var SidebarView = function (container, model) {
     container.css("display", "inline");
 
+    this.button = container.find("#confirm-button-sidebar");
     this.guests = container.find("#guest-number");
     this.table = container.find("#table-body");
     this.cost = container.find("#total-cost");

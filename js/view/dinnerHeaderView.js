@@ -6,5 +6,5 @@ var DinnerHeaderView = function (container, model) {
 	this.numberOfPeople = container.find("#numberOfPeople");
 	this.goBackButton = container.find("#goBackButton");
 
-	this.numberOfPeople.val(model.getNumberOfGuests());
+	this.numberOfPeople.text(model.getNumberOfGuests());
 };

@@ -8,15 +8,19 @@ var DishDetailsView = function (container, model) {
 
     this.name = container.find("#dish");
     this.cost = container.find("#ingredients-total-cost");
+    this.image = container.find("#dish-image");
     this.description = container.find("#description");
+    this.people = container.find("#people-title");
     this.preparation = container.find("#preparation");
     this.ingredients = container.find("table");
 
     var dish = model.getDish(1); // arbitrary dish while controller isn't implemented
     this.name.text(dish["name"]);
     this.cost.val(model.getDishPrice(dish["id"]));
+    this.image.attr("src", "images/" + dish["image"]);
     this.description.text(dish["description"]);
     this.preparation.text(dish["description"]);
+    this.people.text(model.getNumberOfGuests());
 
     for (i = 0; i < dish["ingredients"].length; i++) {
         var currentDish = dish["ingredients"][i];

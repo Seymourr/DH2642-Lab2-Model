@@ -69,7 +69,7 @@ var DinnerModel = function() {
 		var ingredientList = this.getAllIngredients();
 		var totalPrice = 0;
 		for(i = 0; i < ingredientList.length; i++){
-			totalPrice += ingredientList['price']
+			totalPrice += ingredientList[i]['price'];
 		}
 		totalPrice *= numberOfGuests;
 		return totalPrice;

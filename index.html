@@ -93,7 +93,7 @@
             </table>
             <hr>
             <p id="total-cost">SEK 77.20</p>
-            <button class="btn btn-primary">Confirm Dinner</button>
+            <button id="confirm-button-sidebar" class="btn btn-primary">Confirm Dinner</button>
         </div>
     </div>
 
@@ -171,7 +171,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <h1 id="dish">Lasagne</h1>
-                    <img src="images/meatballs.jpg" width="300" height="150">
+                    <img id="dish-image" src="images/meatballs.jpg" width="300" height="150">
                     <p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nunc felis,
                         ultrices non erat a,
                         pharetra bibendum lorem. Morbi iaculis et odio quis molestie. Sed condimentum erat sem, at
@@ -180,7 +180,7 @@
                     </button>
                 </div>
                 <div id="ingredient-list" class="col-lg-6">
-                    <h3>Ingredients for 4 people</h3>
+                    <h3>Ingredients for <span id="people-title">4</span> people</h3>
                     <hr>
                     <table class="table">
                         <tr>
