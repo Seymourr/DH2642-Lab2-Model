@@ -73,12 +73,28 @@ html, body {
 }
 
 #view2, #view3, #view4 {
-    height: 90%;
+    height: 100%;
 }
 
+#view3 #search-form {
+    margin-left: 20px;
+}
+#view4 span p, span h1 {
+    padding-left: 30px;
+}
+
+#view4 #ingredient-list {
+    margin-top: 20px;
+}
+
+#view4 #confirmButtonDiv {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
 #left-pane {
     height: 100%;
     border-right: 1px solid black;
+
 }
 
 #left-pane input {
@@ -175,6 +191,11 @@ hr {
     padding-top: 5%;
 }
 
+.btn {
+    background-color: rgba(255, 102, 0, 1);
+    color: black;
+    border-color: black;
+}
 #view6 #preCourse, #mainCourse, #dessert {
     background-color: #ededed;
     height: 5%;
@@ -202,7 +223,7 @@ hr {
     border: 2px solid black;
     font-size: 20px;
     font-weight: bold;
-    color:black;
+    color: black;
     background: rgba(255, 102, 0, 1);
 }
 

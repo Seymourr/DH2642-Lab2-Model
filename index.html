@@ -25,7 +25,7 @@
     </div>
 
     <!-- Splash screen -->
-    <div id="view1" style="display:block">
+    <div id="view1" style="display:none">
         <script>
             if (document.getElementById("view1").style.display != 'none') {
                 document.body.style.backgroundImage = "url('images/firstpage.jpg')";
@@ -75,7 +75,7 @@
     </div>
 
     <!-- Left panel for select dish and dish details screens -->
-    <div id="view2" style="display:none">
+    <div id="view2" style="display:inline">
         <div id="left-pane" class="col-xs-4 col-sm-4 col-lg-2">
             <h3>My Dinner</h3>
             <label for="guest-number">People</label>
@@ -108,7 +108,7 @@
     </div>
 
     <!-- Right panel for select dish screens -->
-    <div id="view3" style="display:none">
+    <div id="view3" style="display:inline">
         <div id="right-pane-select" class="col-xs-8 col-sm-8 col-lg-10">
             <div id="search-pane" class="row">
                 <h2>Select Dish</h2>
@@ -187,7 +187,7 @@
                         malesuada turpis finibus a. Phasellus non fringilla erat, nec egestas lectus.</p>
                 </div>
                 <div id="ingredient-list" class="col-lg-6">
-                    <p>Ingredients for 4 people</p>
+                    <h3>Ingredients for 4 people</h3>
                     <hr>
                     <table class="table">
                         <tr>
@@ -227,15 +227,16 @@
                         </tr>
                     </table>
                     <hr>
-                    <div class="row">
-                        <button class="col-lg-6 btn btn-primary">Confirm Dish</button>
+                    <div id="confirmButtonDiv"class="row">
+                        <button  class="col-lg-6 btn btn-primary">Confirm Dish</button>
                         <p class="col-lg-6">SEK 77.20</p>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <h1>Preparation</h1>
+                
               <span>
+                <h1>Preparation</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam nunc felis, ultrices non erat a,
                     pharetra bibendum lorem. Morbi iaculis et odio quis molestie. Sed condimentum erat sem, at malesuada
                     turpis finibus a. Phasellus non fringilla erat, nec egestas lectus. Nulla fermentum accumsan ante
