@@ -7,14 +7,23 @@ var DinnerModel = function() {
 	var numberOfGuests = 0;
 	var selectedDishes = [];
 
+	//function that returns a dish of specific ID
+	this.getDish = function (id) {
+		for (key in dishes) {
+			if (dishes[key].id == id) {
+				return dishes[key];
+			}
+		}
+	};
+
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests = num;
-	}
+	};
 
 	// should return 
 	this.getNumberOfGuests = function() {
 		return numberOfGuests;
-	}
+	};
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
@@ -24,12 +33,12 @@ var DinnerModel = function() {
 			}
 		}
 		return null;
-	}
+	};
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
 		return selectedDishes;
-	}
+	};
 
 
 	//Returns all ingredients for all the dishes on the menu.
@@ -43,42 +52,42 @@ var DinnerModel = function() {
 			}
 		}
 		return ingredientList;
-	}
+	};
 
 	//Return the cost of a certain dish 
 	this.getDishPrice = function(id) {
-		var dish = getDish(id);
+		var dish = this.getDish(id);
 		var totalPrice = 0;
-		for(i = 0; i < dish['ingredients]'].length; i++){
+		for (i = 0; i < dish['ingredients'].length; i++) {
 			totalPrice += dish['ingredients'][i]['price'];
 		}
 		return totalPrice;
-	}
+	};
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
-		var ingredientList = getAllIngredients();
+		var ingredientList = this.getAllIngredients();
 		var totalPrice = 0;
 		for(i = 0; i < ingredientList.length; i++){
 			totalPrice += ingredientList['price']
 		}
 		totalPrice *= numberOfGuests;
 		return totalPrice;
-		
-	}
+
+	};
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		var dish = getDish(id);
-		var currentDish = getSelectedDish(dish['type']);
+		var dish = this.getDish(id);
+		var currentDish = this.getSelectedDish(dish['type']);
 
 		if(currentDish !== null){
-			removeDishFromMenu(currentDish['id']);
+			this.removeDishFromMenu(currentDish['id']);
 		}
 
-		selectedDishes.push(dish);		
-	}
+		selectedDishes.push(dish);
+	};
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
@@ -88,7 +97,7 @@ var DinnerModel = function() {
 				break;
 			}
 		}
-	}
+	};
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
@@ -109,18 +118,8 @@ var DinnerModel = function() {
 			}
 		}
 	  	return dish.type == type && found;
-	  });	
-	}
-
-	//function that returns a dish of specific ID
-	this.getDish = function (id) {
-	  for(key in dishes){
-			if(dishes[key].id == id) {
-				return dishes[key];
-			}
-		}
-	}
-
+	  });
+	};
 
 	// the dishes variable contains an array of all the 
 	// dishes in the database. each dish has id, name, type,
@@ -373,4 +372,4 @@ var DinnerModel = function() {
 		}
 	];
 
-}
+};

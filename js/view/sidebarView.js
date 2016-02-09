@@ -6,9 +6,9 @@ var SidebarView = function (container, model) {
     this.cost = container.find("#total-cost");
 
     this.guests.val(model.getNumberOfGuests());
-    var menu = model.getAllDishes();
+    var menu = model.getFullMenu();
     for (i = 0; i < menu.length; i++) {
-        var tr = $("<td>");
+        var tr = $("<tr>");
         tr.append("<td></td>");
         tr.append("<td>" + menu[i]["name"] + "</td>");
         tr.append("<td>" + model.getDishPrice(menu[i]["id"]) + "</td>");
