@@ -72,7 +72,7 @@ html, body {
     background: rgba(255, 102, 0, 1);
 }
 
-#content-pane {
+#view2, #view3, #view4 {
     height: 90%;
 }
 
