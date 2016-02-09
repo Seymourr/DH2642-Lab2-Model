@@ -196,13 +196,6 @@ hr {
     color: black;
     border-color: black;
 }
-#view6 #preCourse, #mainCourse, #dessert {
-    background-color: #ededed;
-    height: 5%;
-    border: 2px solid black;
-    text-align: center;
-    padding-top: 5px;
-}
 
 .verticalLine {
     border-left: medium black solid;
