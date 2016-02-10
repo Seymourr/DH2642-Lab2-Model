@@ -251,3 +251,7 @@ hr {
     min-width: 300px;
     position: relative;
 }
+
+#search-pane h2 {
+    margin-left: 10px;
+}
