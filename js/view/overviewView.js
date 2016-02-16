@@ -1,40 +1,50 @@
 var OverviewView = function (container, model) {
     container.css("display", "inline");
-    
+
     // Get all the relevant elements of the view (ones that show data
     // and/or ones that respond to interaction)
-	this.starter = container.find("#starter");
-	this.mainDish = container.find("#mainDish");
-	this.dessert = container.find("#dessert");
+    this.starter = container.find("#starter");
+    this.mainDish = container.find("#mainDish");
+    this.dessert = container.find("#dessert");
 
-	this.totalCost = container.find("#totalDiv");
+    this.totalCost = container.find("#totalDiv");
 
-	this.printButton = container.find("#printButton");
+    this.printButton = container.find("#printButton");
 
-	this.update = function () {
-		this.setDish = function (dishref, ref) {
-			var dish = model.getSelectedDish(ref);
-			if(dish == null) {
-				dishref.find("h6").text("0 SEK");
-				dishref.find("img").attr("src","images/nullImage.png");
-				dishref.find("h3").text("");
-			} else {
-				dishref.find("h6").text(model.getDishPrice(dish['id']) + " SEK");
-				dishref.find("img").attr("src", "images/" + dish['image']);
-				dishref.find("h3").text(dish['name']);
-			}
-		};
+    this.setDish = function (dishref, ref) {
+        var dish = model.getSelectedDish(ref);
+        if (dish == null) {
+            dishref.find("h6").text("0 SEK");
+            dishref.find("img").attr("src", "images/nullImage.png");
+            dishref.find("h3").text("");
+        } else {
+            dishref.find("h6").text(model.getDishPrice(dish['id']) + " SEK");
+            dishref.find("img").attr("src", "images/" + dish['image']);
+            dishref.find("h3").text(dish['name']);
+        }
+    };
 
-		this.setDish(this.starter, "starter");
-		this.setDish(this.mainDish, "main dish");
-		this.setDish(this.dessert, "dessert");
-		this.totalCost.text("Total: " + model.getTotalMenuPrice() + " SEK");
-	};
+    this.setDish(this.starter, "starter");
+    this.setDish(this.mainDish, "main dish");
+    this.setDish(this.dessert, "dessert");
+    this.totalCost.text("Total: " + model.getTotalMenuPrice() + " SEK");
 
-	this.update();
+    // Regardless of change, update view
+    model.addObserver(function (model, obj) {
+        if (typeof obj === "number") {
+            this.setDish(this.starter, "starter");
+            this.setDish(this.mainDish, "main dish");
+            this.setDish(this.dessert, "dessert");
+        } else if (typeof obj === "object") {
+            if (obj["type"] === "starter") {
+                this.setDish(this.starter, "starter");
+            } else if (obj["type"] === "main dish") {
+                this.setDish(this.mainDish, "main dish");
+            } else if (obj["type"] === "dessert") {
+                this.setDish(this.dessert, "dessert");
+            }
+        }
 
-	// Regardless of change, update view
-	model.addObserver(function (model, obj) {
-		this.update()
-	});
+        this.totalCost.text("Total: " + model.getTotalMenuPrice() + " SEK");
+    });
 };
