@@ -27,10 +27,10 @@ var SidebarView = function (container, model) {
         var menu = model.getFullMenu();
         for (i = 0; i < menu.length; i++) {
         var tr = $("<tr>");
-            tr.append("<td></td>");
+            tr.append("<td>" + menu[i]['portions'] + "</td>");
             tr.append("<td>" + menu[i]["name"] + "</td>");
             tr.append("<td>" + model.getDishPrice(menu[i]["id"]) + "</td>");
             table.append(tr);
         }
-    };
+    }
 };

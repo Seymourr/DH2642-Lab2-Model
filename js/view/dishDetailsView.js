@@ -14,27 +14,32 @@ var DishDetailsView = function (container, model) {
     this.preparation = container.find("#preparation");
     this.ingredients = container.find("table");
 
-    
+    this.detailedDish = model.getSelectedDish("starter"); //TODO: Get clicked dish.. somehow..
 
     this.appendDetailedView = function(dish) {
-        this.rightPane.empty();
+        this.ingredients.empty();
         this.name.text(dish["name"]);
-        this.cost.val(model.getDishPrice(dish["id"]));
+        this.cost.text(dish["portions"] * model.getDishPrice(dish["id"]));
         this.image.attr("src", "images/" + dish["image"]);
         this.description.text(dish["description"]);
         this.preparation.text(dish["description"]);
-        this.people.text(model.getNumberOfGuests());
+        this.people.text(dish['portions']);
 
         for (i = 0; i < dish["ingredients"].length; i++) {
             var currentDish = dish["ingredients"][i];
             var tr = $("<tr>");
-            tr.append("<td>" + currentDish["quantity"] + " " + currentDish["unit"] + "</td>");
+            tr.append("<td>" + dish["portions"] * currentDish["quantity"] + " " + currentDish["unit"] + "</td>");
             tr.append("<td>" + currentDish["name"] + "</td>");
-            tr.append("<td>" + currentDish["price"] + "</td>");
+            tr.append("<td> SEK " + dish["portions"] * currentDish["price"] + "</td>");
             this.ingredients.append(tr);
         }
     };
-    var dish = model.getDish(1); //TODO: Get clicked dish.. somehow..
-    this.appendDetailedView(dish);
 
+    this.appendDetailedView(this.detailedDish);
+
+    model.addObserver(function (model, obj) {
+        if (typeof obj === 'number') {
+            this.appendDetailedView(this.detailedDish);
+        }
+    });
 };

@@ -11,7 +11,8 @@ var OverviewView = function (container, model) {
 
 	this.printButton = container.find("#printButton");
 
-	this.setDish = function (dishref, ref) {
+	this.update = function () {
+		this.setDish = function (dishref, ref) {
 			var dish = model.getSelectedDish(ref);
 			if(dish == null) {
 				dishref.find("h6").text("0 SEK");
@@ -22,12 +23,18 @@ var OverviewView = function (container, model) {
 				dishref.find("img").attr("src", "images/" + dish['image']);
 				dishref.find("h3").text(dish['name']);
 			}
+		};
+
+		this.setDish(this.starter, "starter");
+		this.setDish(this.mainDish, "main dish");
+		this.setDish(this.dessert, "dessert");
+		this.totalCost.text("Total: " + model.getTotalMenuPrice() + " SEK");
 	};
 
-	this.setDish(this.starter, "starter");
-	this.setDish(this.mainDish, "main dish");
-	this.setDish(this.dessert, "dessert");
-	this.totalCost.text("Total: " + model.getTotalMenuPrice() + " SEK");
+	this.update();
 
-
+	// Regardless of change, update view
+	model.addObserver(function (model, obj) {
+		this.update()
+	});
 };

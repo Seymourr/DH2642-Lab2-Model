@@ -7,4 +7,10 @@ var DinnerHeaderView = function (container, model) {
 	this.goBackButton = container.find("#goBackButton");
 
 	this.numberOfPeople.text(model.getNumberOfGuests());
+
+	model.addObserver(function (model, obj) {
+		if (typeof obj === 'number') {
+			this.numberOfPeople.text(obj);
+		}
+	});
 };
