@@ -14,9 +14,9 @@ var DinnerModel = function() {
 	};
 
 	//Private function, notify all observers on this model
-	var notifyObservers = function(obj) {
-		for(var i = 0; i < this.listeners.length; i++) {
-			this.listeners[i](this,obj);
+	this.notifyObservers = function(obj) {
+		for(var i = 0; i < listeners.length; i++) {
+			listeners[i](this,obj);
 		}
 	};
 
@@ -27,6 +27,7 @@ var DinnerModel = function() {
 				return dishes[key];
 			}
 		}
+		return null;
 	};
 
 	this.setNumberOfGuests = function(num) {
