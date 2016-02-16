@@ -111,7 +111,7 @@ var DinnerModel = function() {
 		var removed;
 		for (i = 0; i < selectedDishes.length; i++) {
 			if (selectedDishes[i]['id'] === id) {
-				removed = remselectedDishes.splice(i, 1);
+				removed = selectedDishes.splice(i, 1);
 				break;
 			}
 		}

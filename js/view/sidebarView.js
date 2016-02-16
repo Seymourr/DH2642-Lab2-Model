@@ -10,27 +10,32 @@ var SidebarView = function (container, model) {
 
     this.guests.val(model.getNumberOfGuests());
     this.cost.val(model.getTotalMenuPrice());
-    updateTable(this.table);
+  
 
-    model.addObserver(function(model, obj) {
+ 
+   
+    var updateTable = function() {
+        this.table.empty();
+        var menu = model.getFullMenu();
+        for (i = 0; i < menu.length; i++) {
+        var tr = $("<tr>").data("id", menu[i]["id"]);
+            tr.append("<td>" + menu[i]['portions'] + "</td>");
+            tr.append("<td>" + menu[i]["name"] + "</td>");
+            tr.append("<td>" + model.getDishPrice(menu[i]["id"]) + "</td>");
+            this.table.append(tr);
+        }
+    };
+    updateTable();
+
+    this.obs = function(model, obj) {
         if(typeof obj === 'number'){
             this.guests.val(obj); //New number of guests
             this.cost.val(model.getTotalMenuPrice());
         } else if(typeof obj === 'object') {
             //Something was removed or added to the menu
-            updateTable(this.table);
+            updateTable();
         }
-    });
-   
-    function updateTable(table) {
-        table.empty();
-        var menu = model.getFullMenu();
-        for (i = 0; i < menu.length; i++) {
-        var tr = $("<tr>");
-            tr.append("<td>" + menu[i]['portions'] + "</td>");
-            tr.append("<td>" + menu[i]["name"] + "</td>");
-            tr.append("<td>" + model.getDishPrice(menu[i]["id"]) + "</td>");
-            table.append(tr);
-        }
-    }
+    };
+    
+    model.addObserver(this.obs);
 };

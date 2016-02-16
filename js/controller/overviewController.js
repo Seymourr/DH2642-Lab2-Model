@@ -1,9 +1,18 @@
 var OverviewController = function (view, model) {
-    view.plusButton.click(function () {
-        model.setNumberOfGuests(model.getNumberOfGuests() + 1);
-    });
+   
+   var listeners = [];
 
-    view.minusButton.click(function () {
-        model.setNumberOfGuests(model.getNumberOfGuests() - 1);
-    });
+	//Add observer to list of listeners
+	this.addObserver = function(observer){
+		listeners.push(observer);
+	};
+
+	//Private function, notify all observers on this model
+	this.notifyObservers = function(obj) {
+		for(var i = 0; i < listeners.length; i++) {
+			listeners[i](this,obj);
+		}
+	};
+
+	view.printButton.click(this.notifyObservers());
 };
