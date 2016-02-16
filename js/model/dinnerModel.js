@@ -6,6 +6,19 @@ var DinnerModel = function() {
 
 	var numberOfGuests = 0;
 	var selectedDishes = [];
+	var listeners = [];
+
+	//Add observer to list of listeners
+	this.addObserver = function(observer){
+		listeners.push(observer);
+	};
+
+	//Private function, notify all observers on this model
+	var notifyObservers = function(obj) {
+		for(var i = 0; i < this.listeners.length; i++) {
+			this.listeners[i](this,obj);
+		}
+	};
 
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
@@ -18,6 +31,7 @@ var DinnerModel = function() {
 
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests = num;
+		this.notifyObservers(num);
 	};
 
 	// should return 
@@ -87,16 +101,19 @@ var DinnerModel = function() {
 		}
 
 		selectedDishes.push(dish);
+		this.notifyObservers(dish);
 	};
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
+		var removed;
 		for (i = 0; i < selectedDishes.length; i++) {
 			if (selectedDishes[i]['id'] === id) {
-				selectedDishes.splice(i, 1);
+				removed = remselectedDishes.splice(i, 1);
 				break;
 			}
 		}
+		this.notifyObservers(removed);
 	};
 
 	this.getAllDishes = function () {
