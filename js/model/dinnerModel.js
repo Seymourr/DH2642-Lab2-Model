@@ -16,7 +16,7 @@ var DinnerModel = function() {
 	//Private function, notify all observers on this model
 	this.notifyObservers = function(obj) {
 		for(var i = 0; i < listeners.length; i++) {
-			listeners[i](this,obj);
+			listeners[i].update(this,obj);
 		}
 	};
 

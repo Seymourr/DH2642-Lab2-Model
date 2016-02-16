@@ -16,6 +16,7 @@ var sidebarController = function (view, model, container) {
 	container.find("tr").click(function() {
 	model.removeDishFromMenu($(this).data("id"))
 	}); //Inte helt hundra..
+	//UPDATE: Verkar bara funka en gång..?
 	view.button.click(this.notifyObservers());
 	
 
