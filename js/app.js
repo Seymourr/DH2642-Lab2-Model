@@ -54,4 +54,6 @@ $(function() {
 		}
 		views[currentView].show(dish);
 	}
+
+	updateVisibility(views);
 });

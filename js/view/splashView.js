@@ -1,7 +1,11 @@
 var SplashView = function (container) {
     container.css("display", "inline");
 
-    if (document.getElementById("view1").style.display != 'none') {
+    this.button = container.find("#startButton");
+
+    this.show = function () {
+        container.css("display", "inline");
+
         document.body.style.backgroundImage = "url('images/firstpage.jpg')";
         document.body.style.backgroundSize = "100%";
         document.body.style.position = "static";
@@ -10,14 +14,11 @@ var SplashView = function (container) {
         document.getElementById("header").style.backgroundColor = "#FFDEAD";
     }
 
-    this.button = container.find("#startButton");
-
-    this.show = function () {
-        container.css("display", "inline");
-    }
-
     this.hide = function () {
         container.css("display", "none");
+
+        $(document.body).css("background-image", "");
+        $("#header").css({"opacity": "1", "background-color": "#ededed"});
     }
 };
 
