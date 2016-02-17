@@ -1,9 +1,5 @@
-var InstructionsController = function (view, model) {
-    view.plusButton.click(function () {
-        model.setNumberOfGuests(model.getNumberOfGuests() + 1);
-    });
-
-    view.minusButton.click(function () {
-        model.setNumberOfGuests(model.getNumberOfGuests() - 1);
+var InstructionsController = function (view, model, master) {
+    view.goBackButton.click(function () {
+        master.goBack();
     });
 };
