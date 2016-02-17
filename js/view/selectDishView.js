@@ -14,8 +14,8 @@ var SelectDishView = function (container, model) {
     
 
 
-    this.appendDishes = function(dishes, browsingPane){
-        browsingPane.empty();
+    this.appendDishes = function(dishes){
+        this.browsingPane.empty();
         for (i = 0; i < dishes.length; i++) {
             var course = $("<div class='course col-xs-6 col-sm-4 col-lg-2'>");
             var imageBox = $("<div class='image-box'>");
@@ -31,9 +31,9 @@ var SelectDishView = function (container, model) {
             imageBox.append(name);
             course.append(imageBox);
             course.append(description);
-            browsingPane.append(course);
+            this.browsingPane.append(course);
         }
     };
 
-    appendDishes(dishes, this.browsingPane);
+    this.appendDishes(dishes);
 };
