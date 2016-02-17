@@ -24,12 +24,21 @@ $(function() {
 
 	// dish may be undefined
 	this.goForward = function(dish){
-		currentView++;
+		if(!dish && currentView === 2) {
+			currentView = 5;
+		} else {
+			currentView++;
+		}
 		updateVisibility(views, dish);
 	};
 
 	this.goBack = function(){
-		currentView--;
+		
+		if(currentView === 5) {
+			currentView = 2;
+		} else {
+			currentView--;
+		}
 		updateVisibility(views, dish);
 	};
 

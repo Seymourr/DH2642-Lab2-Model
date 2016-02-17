@@ -16,7 +16,6 @@ var SidebarController = function (view, model, container, master) {
 
 	view.button.click(function () {
 		master.goForward();
-		master.goForward();
 	});
 
 };
