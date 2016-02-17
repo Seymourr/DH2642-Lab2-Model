@@ -1,4 +1,5 @@
-var sidebarController = function (view, model, container) {
+var sidebarController = function (view, model, container, master) {
+
     var listeners = [];
 
 	//Add observer to list of listeners
@@ -13,11 +14,19 @@ var sidebarController = function (view, model, container) {
 		}
 	};
 
-	container.find("tr").click(function() {
-	model.removeDishFromMenu($(this).data("id"))
-	}); //Inte helt hundra..
-	//UPDATE: Verkar bara funka en gång..?
-	view.button.click(this.notifyObservers());
-	
+	$("#table-body").on("click", "tr", function() {
+		model.removeDishFromMenu($(this).data("id"));
+	}); 
+
+	var input = $("#guest-number");
+	input.change(function() {
+		if(input.val() < 1) {
+			input.val(1);
+		} else {
+			model.setNumberOfGuests(input.val());
+		}
+	});
+
+	view.button.click(master.goForward());
 
 };
