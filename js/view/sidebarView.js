@@ -1,4 +1,5 @@
 var SidebarView = function (container, model) {
+
     container.css("display", "inline");
 
     this.button = container.find("#confirm-button-sidebar");
