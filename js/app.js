@@ -16,7 +16,7 @@ $(function() {
 	var sideBarController = new SidebarController(sidebar, model, $("#view2"), this);
 	var selectDishView = new SelectDishView($("#view3"), model);
 	var selectDishController = new SelectDishController(selectDishView, model, $("#view3"), this);
-	var dishDetailsView = new DishDetailsView($("#view4"), model);
+/*	var dishDetailsView = new DishDetailsView($("#view4"), model);
 	var dishDetailsController = new DishDetailsController(dishDetailsView, model, this);
 	var dinnerHeader = new DinnerHeaderView($("#view5"), model);
 	var dinnerHeaderController = new DinnerHeaderController(dinnerHeader, model, this);
@@ -25,7 +25,7 @@ $(function() {
 	var instructionsView = new InstructionsView($("#view7"), model);
 
 	views.push(sidebar, selectDishView, dishDetailsView, dinnerHeader, overviewView);
-
+*/
 	// dish may be undefined
 	this.goForward = function(dish){
 		currentView++;

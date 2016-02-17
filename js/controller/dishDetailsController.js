@@ -1,4 +1,4 @@
 var DishDetailsController = function (view, model, master) {
-    view.goBackButton.click(master.goBack());
-    view.confirmButton.click(master.goForward());
+    view.backButton.click(master.goBack);
+    view.confirmButton.click(master.goForward);
 };
