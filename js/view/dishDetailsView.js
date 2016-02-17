@@ -19,23 +19,23 @@ var DishDetailsView = function (container, model) {
     this.appendDetailedView = function(dish) {
         this.ingredients.empty();
         this.name.text(dish["name"]);
-        this.cost.text(dish["portions"] * model.getDishPrice(dish["id"]));
+        this.cost.text(model.getNumberOfGuests() * model.getDishPrice(dish["id"]));
         this.image.attr("src", "images/" + dish["image"]);
         this.description.text(dish["description"]);
         this.preparation.text(dish["description"]);
-        this.people.text(dish['portions']);
+        this.people.text(model.getNumberOfGuests());
 
         for (i = 0; i < dish["ingredients"].length; i++) {
             var currentDish = dish["ingredients"][i];
             var tr = $("<tr>");
-            tr.append("<td>" + dish["portions"] * currentDish["quantity"] + " " + currentDish["unit"] + "</td>");
+            tr.append("<td>" + model.getNumberOfGuests() * currentDish["quantity"] + " " + currentDish["unit"] + "</td>");
             tr.append("<td>" + currentDish["name"] + "</td>");
-            tr.append("<td> SEK " + dish["portions"] * currentDish["price"] + "</td>");
+            tr.append("<td> SEK " + model.getNumberOfGuests() * currentDish["price"] + "</td>");
             this.ingredients.append(tr);
         }
     };
 
-    this.appendDetailedView(this.detailedDish);
+  //  this.appendDetailedView(this.detailedDish);
 
 
 	this.update = function (model, obj) {

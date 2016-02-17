@@ -4,12 +4,7 @@ $(function() {
 	var currentView = 0; // zero-indexed
 	var model = new DinnerModel();
 
-	// Example values for model
-	model.setNumberOfGuests(7);
-	model.addDishToMenu(3);
-	model.addDishToMenu(100);
-	model.addDishToMenu(201);
-
+	model.setNumberOfGuests(1); //Standard value
 	//And create the needed controllers and views
 	var splashView = new SplashView($("#view1"), this);
 	var splashController = new SplashController(splashView, model, this);

@@ -35,8 +35,5 @@ var SelectDishController = function (view, model, container, master) {
 
 	view.browsingPane.on("click", ".image-box", function() {
 		master.goForward($(this).data("id"));
-
-
-		model.removeDishFromMenu($(this).data("id"));
 	}); 
 };

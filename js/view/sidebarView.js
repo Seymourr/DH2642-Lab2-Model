@@ -22,7 +22,7 @@ var SidebarView = function (container, model) {
             var tr = $("<tr>").data("id", menu[i]["id"]);
             tr.append("<td>" + menu[i]['portions'] + "</td>");
             tr.append("<td>" + menu[i]["name"] + "</td>");
-            tr.append("<td>" + model.getDishPrice(menu[i]["id"]) + "</td>");
+            tr.append("<td>" + menu[i]['portions']*model.getDishPrice(menu[i]["id"]) + "</td>");
             this.table.append(tr);
         }
     };
@@ -31,11 +31,12 @@ var SidebarView = function (container, model) {
     this.update = function(model, obj) {
         if(typeof obj === 'number'){
             this.guests.val(obj); //New number of guests
-            this.cost.val(model.getTotalMenuPrice());
         } else if(typeof obj === 'object') {
             //Something was removed or added to the menu
             this.updateTable();
         }
+
+        this.cost.text(model.getTotalMenuPrice());
     };
     
     model.addObserver(this);

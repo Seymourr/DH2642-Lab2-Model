@@ -10,11 +10,12 @@ var SidebarController = function (view, model, container, master) {
 		if(input.val() < 1) {
 			input.val(1);
 		} else {
-			model.setNumberOfGuests(input.val());
+			model.setNumberOfGuests(parseInt(input.val()));
 		}
 	});
 
 	view.button.click(function () {
+		master.goForward();
 		master.goForward();
 	});
 
