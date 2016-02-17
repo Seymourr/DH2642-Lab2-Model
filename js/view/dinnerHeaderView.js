@@ -13,4 +13,12 @@ var DinnerHeaderView = function (container, model) {
 			this.numberOfPeople.text(obj);
 		}
 	});
+
+	this.show = function () {
+		container.css("display", "inline");
+	}
+
+	this.hide = function () {
+		container.css("display", "none");
+	}
 };

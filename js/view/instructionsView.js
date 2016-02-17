@@ -52,4 +52,12 @@ var InstructionsView = function (container, model) {
             this.updateInstructions();
         }
     });
+
+    this.show = function () {
+        container.css("display", "inline");
+    }
+
+    this.hide = function () {
+        container.css("display", "none");
+    }
 };
