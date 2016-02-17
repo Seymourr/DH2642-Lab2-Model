@@ -38,7 +38,7 @@ var DishDetailsView = function (container, model) {
     this.appendDetailedView(this.detailedDish);
 
 
-	this.update = function (model, obj) {
+	this.update =  function (model, obj) {
         if (typeof obj === 'number') {
             this.appendDetailedView(this.detailedDish);
         }

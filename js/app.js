@@ -12,6 +12,7 @@ $(function() {
 
 	//And create the needed controllers and views
 	var splashView = new SplashView($("#view1"), this);
+	var splashController = new SplashController(splashView, model, this);
 	var sidebar = new SidebarView($("#view2"), model);
 	var sideBarController = new SidebarController(sidebar, model, $("#view2"), this);
 	var selectDishView = new SelectDishView($("#view3"), model);

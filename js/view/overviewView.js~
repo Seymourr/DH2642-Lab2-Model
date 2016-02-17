@@ -46,8 +46,7 @@ var OverviewView = function (container, model) {
         }
 
         this.totalCost.text("Total: " + model.getTotalMenuPrice() + " SEK");
-    };
-     
+    }; 
     model.addObserver(this);
    
 

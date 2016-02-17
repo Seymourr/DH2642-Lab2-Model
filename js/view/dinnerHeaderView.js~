@@ -13,7 +13,7 @@ var DinnerHeaderView = function (container, model) {
 			this.numberOfPeople.text(obj);
 		}
 	};
-	model.addObserver(this);
+	model.addObserver(update);
 
 	this.show = function () {
 		container.css("display", "inline");

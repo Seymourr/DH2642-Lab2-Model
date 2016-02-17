@@ -46,14 +46,12 @@ var InstructionsView = function (container, model) {
     };
 
     this.updateInstructions();
-	
-	this.update =  function (model, obj) {
+
+    model.addObserver(function (model, obj) {
         if (typeof obj === 'object') {
             this.updateInstructions();
         }
-    };
-    model.addObserver(this);
-   
+    });
 
     this.show = function () {
         container.css("display", "inline");
