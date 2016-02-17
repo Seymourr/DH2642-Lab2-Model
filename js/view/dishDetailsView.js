@@ -49,8 +49,10 @@ var DishDetailsView = function (container, model) {
     
    
 
-    this.show = function () {
+    this.show = function (dish) {
         container.css("display", "inline");
+        this.detailedDish = model.getDish(dish);
+        this.appendDetailedView(this.detailedDish);
     }
 
     this.hide = function () {
