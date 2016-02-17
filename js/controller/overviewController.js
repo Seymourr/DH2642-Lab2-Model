@@ -1,4 +1,6 @@
 var OverviewController = function (view, model, master) {
 
-	view.printButton.click(master.goForward);
+	view.printButton.click(function () {
+		master.goForward();
+	});
 };

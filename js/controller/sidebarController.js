@@ -14,6 +14,8 @@ var SidebarController = function (view, model, container, master) {
 		}
 	});
 
-	view.button.click(master.goForward);
+	view.button.click(function () {
+		master.goForward();
+	});
 
 };
