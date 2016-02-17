@@ -1,18 +1,4 @@
-var OverviewController = function (view, model) {
-   
-   var listeners = [];
+var OverviewController = function (view, model, master) {
 
-	//Add observer to list of listeners
-	this.addObserver = function(observer){
-		listeners.push(observer);
-	};
-
-	//Private function, notify all observers on this model
-	this.notifyObservers = function(obj) {
-		for(var i = 0; i < listeners.length; i++) {
-			listeners[i](this,obj);
-		}
-	};
-
-	view.printButton.click(this.notifyObservers());
+	view.printButton.click(master.goForward());
 };

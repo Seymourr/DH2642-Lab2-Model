@@ -10,11 +10,11 @@ var SelectDishView = function (container, model) {
 
 
     var dishes = model.getAllDishes();
-    appendDishes(dishes, this.browsingPane);
+
     
 
 
-    function appendDishes(dishes, browsingPane){
+    this.appendDishes = function(dishes, browsingPane){
         browsingPane.empty();
         for (i = 0; i < dishes.length; i++) {
             var course = $("<div class='course col-xs-6 col-sm-4 col-lg-2'>");
@@ -33,5 +33,7 @@ var SelectDishView = function (container, model) {
             course.append(description);
             browsingPane.append(course);
         }
-    }
+    };
+
+    appendDishes(dishes, this.browsingPane);
 };
