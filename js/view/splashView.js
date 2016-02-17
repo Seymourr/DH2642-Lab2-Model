@@ -11,5 +11,13 @@ var SplashView = function (container) {
     }
 
     this.button = container.find("#startButton");
+
+    this.show = function () {
+        container.css("display", "inline");
+    }
+
+    this.hide = function () {
+        container.css("display", "none");
+    }
 };
 

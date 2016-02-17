@@ -42,4 +42,12 @@ var DishDetailsView = function (container, model) {
             this.appendDetailedView(this.detailedDish);
         }
     });
+
+    this.show = function () {
+        container.css("display", "inline");
+    }
+
+    this.hide = function () {
+        container.css("display", "none");
+    }
 };

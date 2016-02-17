@@ -36,4 +36,12 @@ var SelectDishView = function (container, model) {
     };
 
     appendDishes(dishes, this.browsingPane);
+
+    this.show = function () {
+        container.css("display", "inline");
+    }
+
+    this.hide = function () {
+        container.css("display", "none");
+    }
 };

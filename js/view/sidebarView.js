@@ -39,4 +39,12 @@ var SidebarView = function (container, model) {
     };
     
     model.addObserver(this);
+
+    this.show = function () {
+        container.css("display", "inline");
+    }
+
+    this.hide = function () {
+        container.css("display", "none");
+    }
 };

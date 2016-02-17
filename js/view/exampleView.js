@@ -8,6 +8,13 @@ var ExampleView = function (container) {
 	this.minusButton = container.find("#minusGuest");
 	
 	this.numberOfGuests.html("<h1>Hello World</h1>");
-	
+
+	this.show = function () {
+		container.css("display", "inline");
+	}
+
+	this.hide = function () {
+		container.css("display", "none");
+	}
 }
  
