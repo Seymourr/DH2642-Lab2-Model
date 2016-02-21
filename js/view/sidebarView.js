@@ -39,7 +39,7 @@ var SidebarView = function (container, model) {
             this.updateTable();
         }
 
-        this.cost.text(model.getTotalMenuPrice());
+        this.cost.text("SEK " + model.getTotalMenuPrice());
     };
     
     model.addObserver(this);
