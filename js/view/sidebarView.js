@@ -19,10 +19,13 @@ var SidebarView = function (container, model) {
         this.table.empty();
         var menu = model.getFullMenu();
         for (var i = 0; i < menu.length; i++) {
-            var tr = $("<tr>").data("id", menu[i]["id"]);
+            var tr = $("<tr>");
             tr.append("<td>" + menu[i]['portions'] + "</td>");
             tr.append("<td>" + menu[i]["name"] + "</td>");
-            tr.append("<td>" + menu[i]['portions']*model.getDishPrice(menu[i]["id"]) + "</td>");
+            tr.append("<td>" + menu[i]['portions']*model.getDishPrice(menu[i]["id"]) + "</td>");   
+            var div = $("<div class='trdiv'>");
+            div.append($("<button type='button' class='btn btn-danger btn-circle'><i class='glyphicon glyphicon-remove'></i></button>").data("id", menu[i]["id"]));      
+            tr.append(div); 
             this.table.append(tr);
         }
     };

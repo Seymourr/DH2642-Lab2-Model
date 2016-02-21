@@ -31,20 +31,9 @@ var OverviewView = function (container, model) {
 
     // Regardless of change, update view
     this.update =  function (model, obj) {
-        if (typeof obj === "number") {
             this.setDish(this.starter, "starter");
             this.setDish(this.mainDish, "main dish");
             this.setDish(this.dessert, "dessert");
-        } else if (typeof obj === "object") {
-            if (obj["type"] === "starter") {
-                this.setDish(this.starter, "starter");
-            } else if (obj["type"] === "main dish") {
-                this.setDish(this.mainDish, "main dish");
-            } else if (obj["type"] === "dessert") {
-                this.setDish(this.dessert, "dessert");
-            }
-        }
-
         this.totalCost.text("Total: " + model.getTotalMenuPrice() + " SEK");
     };
      

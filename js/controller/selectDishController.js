@@ -25,6 +25,20 @@ var SelectDishController = function (view, model, container, master) {
  	};
 
  	view.searchButton.click(search);
+ 	$(view.dropdown).click(function() {
+ 		var type = $("#dropdown option:selected");
+ 		var collection;
+ 		if(type.text() === "all"){
+ 			collection = model.getAllDishes();
+ 		} else if(type.text() === "starter") {
+ 			collection = model.getAllFilteredDishes("starter");
+ 		} else if(type.text() === "main dish") {
+ 			collection = model.getAllFilteredDishes("main dish");
+ 		} else if(type.text() === "dessert") {
+ 			collection = model.getAllFilteredDishes("dessert");
+ 		}
+ 		view.appendDishes(collection);
+ 	});
 
  	//Enter
  	$(document).keypress(function(e) {
