@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
 	//We instantiate our model
 	var views = [];
 	var currentView = 0; // zero-indexed
@@ -23,8 +23,8 @@ $(function() {
 	views.push(splashView, sidebar, selectDishView, dishDetailsView, dinnerHeader, overviewView, instructionsView);
 
 	// dish may be undefined
-	this.goForward = function(dish){
-		if(!dish && currentView === 2) {
+	this.goForward = function (dish) {
+		if (!dish && currentView === 2) {
 			currentView = 5;
 		} else {
 			currentView++;
@@ -32,9 +32,9 @@ $(function() {
 		updateVisibility(views, dish);
 	};
 
-	this.goBack = function(){
-		
-		if(currentView === 5) {
+	this.goBack = function () {
+
+		if (currentView === 5) {
 			currentView = 2;
 		} else {
 			currentView--;

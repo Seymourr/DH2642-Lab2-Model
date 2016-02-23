@@ -1,6 +1,6 @@
 //DinnerModel Object constructor
-var DinnerModel = function() {
- 	
+var DinnerModel = function () {
+
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
 
@@ -9,21 +9,21 @@ var DinnerModel = function() {
 	var listeners = [];
 
 	//Add observer to list of listeners
-	this.addObserver = function(observer){
+	this.addObserver = function (observer) {
 		listeners.push(observer);
 	};
 
 	//Private function, notify all observers on this model
-	this.notifyObservers = function(obj) {
-		for(var i = 0; i < listeners.length; i++) {
-			listeners[i].update(this,obj);
+	this.notifyObservers = function (obj) {
+		for (var i = 0; i < listeners.length; i++) {
+			listeners[i].update(this, obj);
 		}
 	};
 
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
 		var url = "http://api.bigoven.com/recipe/" + id + "?api_key=18f3cT02U9f6yRl3OKDpP8NA537kxYKu&pg=1&rpp=1";
-	//	console.log(url);
+		//	console.log(url);
 		$.ajax({
 			context: this,
 			dataType: "json",
@@ -40,22 +40,22 @@ var DinnerModel = function() {
 		});
 	};
 
-	this.setNumberOfGuests = function(num) {
+	this.setNumberOfGuests = function (num) {
 		numberOfGuests = num;
 		this.notifyObservers(num);
 	};
 
 	// should return 
-	this.getNumberOfGuests = function() {
+	this.getNumberOfGuests = function () {
 		return numberOfGuests;
 	};
 
 	//Returns the dish that is on the menu for selected type 
-	this.getSelectedDish = function(type) {
-		for(i = 0; i < selectedDishes.length; i++){
+	this.getSelectedDish = function (type) {
+		for (i = 0; i < selectedDishes.length; i++) {
 			console.log(selectedDishes[i]['Category']);
 			console.log(type);
-			if(selectedDishes[i]['Category'] === type) {
+			if (selectedDishes[i]['Category'] === type) {
 				return selectedDishes[i];
 			}
 		}
@@ -63,29 +63,29 @@ var DinnerModel = function() {
 	};
 
 	//Returns all the dishes on the menu.
-	this.getFullMenu = function() {
+	this.getFullMenu = function () {
 		return selectedDishes;
 	};
 
 
 	//Returns all ingredients for all the dishes on the menu.
-	this.getAllIngredients = function() {
+	this.getAllIngredients = function () {
 		//TODO: Concatenate similar ingredients
 		var ingredientList = [];
-		for(i = 0; i < selectedDishes.length; i++){
+		for (i = 0; i < selectedDishes.length; i++) {
 			var ing = selectedDishes[i]['Ingredients'];
-			for(j = 0; j < ing.length; j++){
+			for (j = 0; j < ing.length; j++) {
 				ingredientList.push(ing[j]);
 			}
 		}
 		return ingredientList;
 	};
 
-	this.getIngredientPrice = function(ing) {
+	this.getIngredientPrice = function (ing) {
 		return ing['Quantity']; //Quantity is ingredient price..
-	}
+	};
 	//Return the cost of a specific dish 
-	this.getDishPrice = function(dish) {
+	this.getDishPrice = function (dish) {
 		var totalPrice = 0;
 		for (i = 0; i < dish['Ingredients'].length; i++) {
 			totalPrice += dish['Ingredients'][i]['Quantity']; //Quantity used as currency..
@@ -94,24 +94,24 @@ var DinnerModel = function() {
 	};
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
-	this.getTotalMenuPrice = function() {
+	this.getTotalMenuPrice = function () {
 		var totalPrice = 0;
-		for(var i = 0; i < selectedDishes.length; i++){
+		for (var i = 0; i < selectedDishes.length; i++) {
 			var dish = selectedDishes[i];
-			totalPrice += dish['portions']*this.getDishPrice(dish);
+			totalPrice += dish['portions'] * this.getDishPrice(dish);
 		}
-		
+
 		return totalPrice;
 
 	};
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
-	this.addDishToMenu = function(dish) {
+	this.addDishToMenu = function (dish) {
 		dish['portions'] = numberOfGuests;
 		var currentDish = this.getSelectedDish(dish['Category']);
 
-		if(currentDish !== null){
+		if (currentDish !== null) {
 			this.removeDishFromMenu(currentDish['RecipeID']);
 		}
 
@@ -120,7 +120,7 @@ var DinnerModel = function() {
 	};
 
 	//Removes dish from menu
-	this.removeDishFromMenu = function(id) {
+	this.removeDishFromMenu = function (id) {
 		var removed;
 		for (i = 0; i < selectedDishes.length; i++) {
 			if (selectedDishes[i]['RecipeID'] === id) {
@@ -149,7 +149,7 @@ var DinnerModel = function() {
 			timeout: 5000,
 			success: function (data) {
 				// dishes has been loaded
-			//	console.log(data);
+				//	console.log(data);
 				this.notifyObservers(data);
 			},
 			error: function () {
