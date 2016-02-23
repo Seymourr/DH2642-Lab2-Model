@@ -130,12 +130,13 @@ var DinnerModel = function() {
 		}
 
 		$.ajax({
+			context: this,
 			dataType: "json",
 			url: url,
 			success: function (data) {
 				// dishes has been loaded
 				console.log(data);
-				this.notifyObservers(dishes);
+				this.notifyObservers(data);
 			},
 			fail: function () {
 				// notify that the loading failed

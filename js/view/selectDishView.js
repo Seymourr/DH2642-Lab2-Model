@@ -19,7 +19,7 @@ var SelectDishView = function (container, model) {
             var img = $("<img>");
             img.attr("src", dishes[i]['ImageURL']); //CHANGED TO ONLINE SRC
             var name = $("<h3>");
-            name.text(dishes[i]["name"]);
+            name.text(dishes[i]["Title"]);
             var description = $("<p>");
             description.text(dishes[i]['Description']);
 
@@ -46,9 +46,7 @@ var SelectDishView = function (container, model) {
             // TODO: Do something reasonable
         } else if (typeof obj === 'object') {
             //Something was removed or added to the menu
-            this.appendDishes(obj);
+            this.appendDishes(obj.Results);
         }
-
-        this.cost.text("SEK " + model.getTotalMenuPrice());
     };
 };
