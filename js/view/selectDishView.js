@@ -61,8 +61,6 @@ var SelectDishView = function (container, model) {
         } else if (typeof obj === 'object') {
             if (obj["Results"] !== undefined) {
                 this.appendDishes(obj.Results);
-            } else {
-                this.setFailedRequest();
             }
         }
     };

@@ -18,7 +18,7 @@ var OverviewView = function (container, model) {
             dishref.find("img").attr("src", "images/nullImage.png");
             dishref.find("h3").text("");
         } else {
-            dishref.find("h6").text(dish['portions']*model.getDishPrice(dish['RecipeID']) + " SEK");
+            dishref.find("h6").text(dish['portions']*model.getDishPrice(dish) + " SEK");
             dishref.find("img").attr("src", dish['ImageURL']);
             dishref.find("h3").text(dish['Title']);
         }

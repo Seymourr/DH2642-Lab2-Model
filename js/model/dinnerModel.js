@@ -22,12 +22,22 @@ var DinnerModel = function() {
 
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
-		for (key in dishes) {
-			if (dishes[key].id == id) {
-				return dishes[key];
+		var url = "http://api.bigoven.com/recipe/" + id + "?api_key=18f3cT02U9f6yRl3OKDpP8NA537kxYKu&pg=1&rpp=1";
+	//	console.log(url);
+		$.ajax({
+			context: this,
+			dataType: "json",
+			url: url,
+			success: function (data) {
+				// dishes has been loaded
+				console.log(data);
+				this.notifyObservers(data);
+			},
+			fail: function () {
+				// notify that the loading failed
+				this.notifyObservers(null);
 			}
-		}
-		return null;
+		});
 	};
 
 	this.setNumberOfGuests = function(num) {
@@ -43,7 +53,7 @@ var DinnerModel = function() {
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
 		for(i = 0; i < selectedDishes.length; i++){
-			if(selectedDishes[i]['type'] === type) {
+			if(selectedDishes[i]['Category'] === type) {
 				return selectedDishes[i];
 			}
 		}
@@ -61,7 +71,7 @@ var DinnerModel = function() {
 		//TODO: Concatenate similar ingredients
 		var ingredientList = [];
 		for(i = 0; i < selectedDishes.length; i++){
-			var ing = selectedDishes[i]['ingredients'];
+			var ing = selectedDishes[i]['Ingredients'];
 			for(j = 0; j < ing.length; j++){
 				ingredientList.push(ing[j]);
 			}
@@ -69,12 +79,14 @@ var DinnerModel = function() {
 		return ingredientList;
 	};
 
-	//Return the cost of a certain dish 
-	this.getDishPrice = function(id) {
-		var dish = this.getDish(id);
+	this.getIngredientPrice = function(ing) {
+		return ing['Quantity']; //Quantity is ingredient price..
+	}
+	//Return the cost of a specific dish 
+	this.getDishPrice = function(dish) {
 		var totalPrice = 0;
-		for (i = 0; i < dish['ingredients'].length; i++) {
-			totalPrice += dish['ingredients'][i]['price'];
+		for (i = 0; i < dish['Ingredients'].length; i++) {
+			totalPrice += dish['Ingredients'][i]['Quantity']; //Quantity used as currency..
 		}
 		return totalPrice;
 	};
@@ -84,7 +96,7 @@ var DinnerModel = function() {
 		var totalPrice = 0;
 		for(var i = 0; i < selectedDishes.length; i++){
 			var dish = selectedDishes[i];
-			totalPrice += dish['portions']*this.getDishPrice(dish['id']);
+			totalPrice += dish['portions']*this.getDishPrice(dish);
 		}
 		
 		return totalPrice;
@@ -93,13 +105,12 @@ var DinnerModel = function() {
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
-	this.addDishToMenu = function(id) {
-		var dish = this.getDish(id);
+	this.addDishToMenu = function(dish) {
 		dish['portions'] = numberOfGuests;
-		var currentDish = this.getSelectedDish(dish['type']);
+		var currentDish = this.getSelectedDish(dish['Category']);
 
 		if(currentDish !== null){
-			this.removeDishFromMenu(currentDish['id']);
+			this.removeDishFromMenu(currentDish['RecipeID']);
 		}
 
 		selectedDishes.push(dish);
@@ -110,7 +121,7 @@ var DinnerModel = function() {
 	this.removeDishFromMenu = function(id) {
 		var removed;
 		for (i = 0; i < selectedDishes.length; i++) {
-			if (selectedDishes[i]['id'] === id) {
+			if (selectedDishes[i]['RecipeID'] === id) {
 				removed = selectedDishes.splice(i, 1);
 				break;
 			}
@@ -136,7 +147,7 @@ var DinnerModel = function() {
 			timeout: 5000,
 			success: function (data) {
 				// dishes has been loaded
-				console.log(data);
+			//	console.log(data);
 				this.notifyObservers(data);
 			},
 			error: function () {

@@ -18,8 +18,10 @@ var DishDetailsView = function (container, model) {
 
     this.appendDetailedView = function(dish) {
         this.ingredients.empty();
+        this.description.empty();
+      //  $('#loadingscreenSpinner').remove();
         this.name.text(dish['Title']);
-        this.cost.text(model.getNumberOfGuests() * model.getDishPrice(dish['RecipeID']));
+        this.cost.text(model.getNumberOfGuests() * model.getDishPrice(dish));
         this.image.attr("src", dish['ImageURL']);
         this.description.text(dish['Description']);
         this.preparation.text(dish['Instructions']);
@@ -28,8 +30,12 @@ var DishDetailsView = function (container, model) {
         for (i = 0; i < dish['Ingredients'].length; i++) {
             var currentIngredient = dish['Ingredients'][i];
             var tr = $("<tr>");
-            tr.append("<td>" + model.getNumberOfGuests() * currentIngredient['Quantity'] + " " + currentIngredient['Unit'] + "</td>");
-            tr.append("<td>" + currentIngredient['IngredientInfo']['name'] + "</td>");
+            var unit = currentIngredient['Unit'];
+            if(unit === null) {
+                unit = "pc";
+            }
+            tr.append("<td>" + model.getNumberOfGuests() * currentIngredient['Quantity'] + " " + unit + "</td>");
+            tr.append("<td>" + currentIngredient['Name'] + "</td>");
             tr.append("<td> SEK " + model.getNumberOfGuests() * model.getIngredientPrice(currentIngredient) + "</td>");
             this.ingredients.append(tr);
         }
@@ -37,22 +43,45 @@ var DishDetailsView = function (container, model) {
 
   //  this.appendDetailedView(this.detailedDish);
 
+    this.setLoading = function () {
+        var spinner = new Spinner().spin();
+    //    console.log(spinner);
+      //  spinner.setAttribute("id", "loadingscreenSpinner");
+     //   this.ingredients.append($(spinner.el));
+        this.description.append($(spinner.el));
+    };
+
+    this.setFailedRequest = function () {
+        this.ingredients.empty();
+        this.ingredients.append('<span class="glyphicon glyphicon-alert" aria-hidden="true"></span>');
+        this.ingredients.append("Request failed. Make sure your internet connection is working and make another search.");
+        this.description.append('<span class="glyphicon glyphicon-alert" aria-hidden="true"></span>');
+        this.description.append("Request failed. Make sure your internet connection is working and make another search.");
+    };
+
+
+    this.detailedDish = null;
 
 	this.update = function (model, obj) {
+        console.log(obj);
         if (typeof obj === 'number') {
             this.appendDetailedView(this.detailedDish);
+        } else if(obj["RecipeID"] !== undefined){
+            this.detailedDish = obj;
+            this.appendDetailedView(this.detailedDish);
+        } else if(obj['Results'] === undefined){
+            //Show error view
+            this.setFailedRequest();
         }
     };
     
     model.addObserver(this);
     
-    
-   
 
     this.show = function (dish) {
         container.css("display", "inline");
-        this.detailedDish = model.getDish(dish);
-        this.appendDetailedView(this.detailedDish);
+        this.setLoading();
+        model.getDish(dish);
     }
 
     this.hide = function () {
