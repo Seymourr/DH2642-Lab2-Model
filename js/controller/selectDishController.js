@@ -12,8 +12,18 @@ var SelectDishController = function (view, model, container, master) {
 		}
  	};
 
+	// http://stackoverflow.com/a/10124169/1729441
+	var timer = 0;
+	view.searchForm.on("input", function () {
+		if (timer != 0) {
+			clearTimeout(timer);
+		}
+
+		timer = setTimeout(search, 500);
+	});
+
+	view.dropdown.change(search);
  	view.searchButton.click(search);
-	view.dropdown.click(search);
 
  	//Enter
  	$(document).keypress(function(e) {

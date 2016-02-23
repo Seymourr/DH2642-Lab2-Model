@@ -5,6 +5,7 @@ var SelectDishView = function (container, model) {
     // and/or ones that respond to interaction)
     this.searchText = container.find("#search-text");
     this.searchButton = container.find("#search-button");
+    this.searchForm = container.find("#search-form");
     this.dropdown = container.find("#dropdown");
     this.browsingPane = container.find("#browsing-pane");
 

@@ -121,11 +121,11 @@ var DinnerModel = function() {
 	this.getAllDishes = function (searchField, category) {
 		var url = "http://api.bigoven.com/recipes?api_key=18f3cT02U9f6yRl3OKDpP8NA537kxYKu&pg=1&rpp=200";
 
-		if (searchField !== undefined) {
+		if (searchField !== undefined && searchField.length > 0) {
 			url += "&title_kw=" + searchField;
 		}
 
-		if (category !== undefined) {
+		if (category !== undefined && category.length > 0) {
 			url += "&include_primarycat=" + category;
 		}
 
