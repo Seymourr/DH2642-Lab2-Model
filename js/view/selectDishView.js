@@ -12,22 +12,25 @@ var SelectDishView = function (container, model) {
 	this.appendDishes = function (dishes) {
 		this.browsingPane.empty();
 		for (i = 0; i < dishes.length; i++) {
-			var course = $("<div class='course col-xs-6 col-sm-4 col-lg-2'>");
-			var imageBox = $("<div class='image-box'>").data('RecipeID', dishes[i]['RecipeID']);
+			var dish = dishes[i];
+			if (dish["Category"] === "Appetizers" || dish["Category"] === "Main Dish" || dish["Category"] === "Desserts") {
+				var course = $("<div class='course col-xs-6 col-sm-4 col-lg-2'>");
+				var imageBox = $("<div class='image-box'>").data('RecipeID', dish['RecipeID']);
 
-			var img = $("<img>");
-			img.attr("src", dishes[i]['ImageURL']); //CHANGED TO ONLINE SRC
-			var name = $("<h3>");
-			name.text(dishes[i]["Title"]);
-			var description = $("<p>");
-			description.text(dishes[i]['Description']);
+				var img = $("<img>");
+				img.attr("src", dish['ImageURL']); //CHANGED TO ONLINE SRC
+				var name = $("<h3>");
+				name.text(dish["Title"]);
+				var description = $("<p>");
+				description.text(dish['Description']);
 
-			imageBox.append(img);
-			imageBox.append(name);
-			course.append(imageBox);
-			course.append(description);
+				imageBox.append(img);
+				imageBox.append(name);
+				course.append(imageBox);
+				course.append(description);
 
-			this.browsingPane.append(course);
+				this.browsingPane.append(course);
+			}
 		}
 	};
 
