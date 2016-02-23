@@ -20,9 +20,9 @@ var SidebarView = function (container, model) {
 			var tr = $("<tr>");
 			tr.append("<td>" + menu[i]['portions'] + "</td>");
 			tr.append("<td>" + menu[i]['Title'] + "</td>");
-			tr.append("<td>" + menu[i]['portions'] * model.getDishPrice(menu[i]).toFixed(2) + "</td>");
+			tr.append("<td>" + menu[i]['portions'] * model.getDishPrice(menu[i]).toFixed(2) + "</td>").data("RecipeID", menu[i]["RecipeID"]);
 			var div = $("<div class='trdiv'>");
-			div.append($("<button type='button' class='btn btn-danger btn-circle'><i class='glyphicon glyphicon-remove'></i></button>").data("RecipeID", menu[i]["RecipeID"]));
+			div.append($("<button type='button' class='btn btn-danger btn-circle'><i class='glyphicon glyphicon-remove'></i></button>"));
 			tr.append(div);
 			this.table.append(tr);
 		}

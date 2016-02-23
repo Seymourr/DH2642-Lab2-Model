@@ -42,6 +42,11 @@ $(function () {
 		updateVisibility(views, dish);
 	};
 
+	this.goToDetails = function (dish) {
+		currentView = 3;
+		updateVisibility(views, dish);
+	};
+
 	function updateVisibility(views, dish) {
 		for (i = 0; i < views.length; i++) {
 			views[i].hide();
