@@ -50,12 +50,14 @@ var DinnerModel = function () {
 		return numberOfGuests;
 	};
 
-	//Returns the dish that is on the menu for selected type 
-	this.getSelectedDish = function (type) {
+	//Returns the selected dish with the value of the given key (with 'Category' as default)
+	this.getSelectedDish = function (value, key) {
+		if (key === undefined) {
+			key = 'Category';
+		}
+
 		for (i = 0; i < selectedDishes.length; i++) {
-			console.log(selectedDishes[i]['Category']);
-			console.log(type);
-			if (selectedDishes[i]['Category'] === type) {
+			if (selectedDishes[i][key] === value) {
 				return selectedDishes[i];
 			}
 		}
