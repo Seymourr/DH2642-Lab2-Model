@@ -6,8 +6,10 @@ var SelectDishController = function (view, model, container, master) {
  		var text = searchText.val();
 
  		if(type.text() === "all"){
+			view.setLoading();
 			model.getAllDishes(text);
  		} else {
+			view.setLoading();
 			model.getAllDishes(text, type.text());
 		}
  	};
