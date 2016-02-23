@@ -14,23 +14,23 @@ var DishDetailsView = function (container, model) {
     this.preparation = container.find("#preparation");
     this.ingredients = container.find("table");
 
-    this.detailedDish = model.getSelectedDish("starter"); //TODO: Get clicked dish.. somehow..
+ //   this.detailedDish = model.getSelectedDish("starter"); //TODO: Get clicked dish.. somehow.. (REMOVE?)
 
     this.appendDetailedView = function(dish) {
         this.ingredients.empty();
-        this.name.text(dish["name"]);
-        this.cost.text(model.getNumberOfGuests() * model.getDishPrice(dish["id"]));
-        this.image.attr("src", "images/" + dish["image"]);
-        this.description.text(dish["description"]);
-        this.preparation.text(dish["description"]);
+        this.name.text(dish['Title']);
+        this.cost.text(model.getNumberOfGuests() * model.getDishPrice(dish['RecipeID']));
+        this.image.attr("src", dish['ImageURL']);
+        this.description.text(dish['Description']);
+        this.preparation.text(dish['Instructions']);
         this.people.text(model.getNumberOfGuests());
 
-        for (i = 0; i < dish["ingredients"].length; i++) {
-            var currentDish = dish["ingredients"][i];
+        for (i = 0; i < dish['Ingredients'].length; i++) {
+            var currentIngredient = dish['Ingredients'][i];
             var tr = $("<tr>");
-            tr.append("<td>" + model.getNumberOfGuests() * currentDish["quantity"] + " " + currentDish["unit"] + "</td>");
-            tr.append("<td>" + currentDish["name"] + "</td>");
-            tr.append("<td> SEK " + model.getNumberOfGuests() * currentDish["price"] + "</td>");
+            tr.append("<td>" + model.getNumberOfGuests() * currentIngredient['Quantity'] + " " + currentIngredient['Unit'] + "</td>");
+            tr.append("<td>" + currentIngredient['IngredientInfo']['name'] + "</td>");
+            tr.append("<td> SEK " + model.getNumberOfGuests() * model.getIngredientPrice(currentIngredient) + "</td>");
             this.ingredients.append(tr);
         }
     };

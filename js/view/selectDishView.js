@@ -16,14 +16,14 @@ var SelectDishView = function (container, model) {
         this.browsingPane.empty();
         for (i = 0; i < dishes.length; i++) {
             var course = $("<div class='course col-xs-6 col-sm-4 col-lg-2'>");
-            var imageBox = $("<div class='image-box'>").data("id", dishes[i]["id"]);
+            var imageBox = $("<div class='image-box'>").data('RecipeID', dishes[i]['RecipeID']);
 
             var img = $("<img>");
-            img.attr("src", "images/" + dishes[i]["image"]);
+            img.attr("src", dishes[i]['ImageURL']); //CHANGED TO ONLINE SRC
             var name = $("<h3>");
             name.text(dishes[i]["name"]);
             var description = $("<p>");
-            description.text(dishes[i]["description"]);
+            description.text(dishes[i]['Description']);
 
             imageBox.append(img);
             imageBox.append(name);

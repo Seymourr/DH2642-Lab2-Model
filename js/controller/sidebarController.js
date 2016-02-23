@@ -2,7 +2,7 @@ var SidebarController = function (view, model, container, master) {
 
 
 	$("#table-body").on("click", "button", function() {
-		model.removeDishFromMenu($(this).data("id"));
+		model.removeDishFromMenu($(this).data("RecipeID"));
 	}); 
 
 	var input = $("#guest-number");

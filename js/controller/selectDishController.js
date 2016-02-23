@@ -9,7 +9,7 @@ var SelectDishController = function (view, model, container, master) {
  			if(text.length === 0){
  				collection = model.getAllDishes();
  			} else {
-				collection = model.getAllFilteredDishes("starter", text);
+				collection = model.getAllFilteredDishes("appetizer", text);
 				collection = collection.add(model.getAllFilteredDishes("main dish", text));
 				collection = collection.add(model.getAllFilteredDishes("dessert", text));
 			}
@@ -30,8 +30,8 @@ var SelectDishController = function (view, model, container, master) {
  		var collection;
  		if(type.text() === "all"){
  			collection = model.getAllDishes();
- 		} else if(type.text() === "starter") {
- 			collection = model.getAllFilteredDishes("starter");
+ 		} else if(type.text() === "appetizer") {
+ 			collection = model.getAllFilteredDishes("appetizer");
  		} else if(type.text() === "main dish") {
  			collection = model.getAllFilteredDishes("main dish");
  		} else if(type.text() === "dessert") {
@@ -48,6 +48,6 @@ var SelectDishController = function (view, model, container, master) {
 	});
 
 	view.browsingPane.on("click", ".image-box", function() {
-		master.goForward($(this).data("id"));
+		master.goForward($(this).data("RecipeID"));
 	}); 
 };

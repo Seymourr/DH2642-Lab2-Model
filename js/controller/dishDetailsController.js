@@ -3,7 +3,7 @@ var DishDetailsController = function (view, model, master) {
         master.goBack();
     });
     view.confirmButton.click(function () {
-        model.addDishToMenu(view.detailedDish['id']);
+        model.addDishToMenu(view.detailedDish['RecipeID']);
         master.goBack();
     });
 };
