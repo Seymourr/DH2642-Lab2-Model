@@ -241,6 +241,10 @@ hr {
 	width: 100%;
 }
 
+#view7 h4 {
+	text-transform: uppercase;
+}
+
 #view7 .itemRow #item-1 {
 	min-width: 190px;
 	min-height: 300px;
