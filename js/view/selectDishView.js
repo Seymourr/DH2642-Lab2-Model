@@ -9,8 +9,6 @@ var SelectDishView = function (container, model) {
     this.dropdown = container.find("#dropdown");
     this.browsingPane = container.find("#browsing-pane");
 
-    model.getAllDishes();
-
     this.appendDishes = function(dishes){
         this.browsingPane.empty();
         for (i = 0; i < dishes.length; i++) {
@@ -33,6 +31,18 @@ var SelectDishView = function (container, model) {
         }
     };
 
+    this.setLoading = function () {
+        this.browsingPane.empty();
+        var spinner = new Spinner().spin();
+        this.browsingPane.append($(spinner.el));
+    };
+
+    this.setFailedRequest = function () {
+        this.browsingPane.empty();
+        this.browsingPane.append('<span class="glyphicon glyphicon-alert" aria-hidden="true"></span>');
+        this.browsingPane.append("Request failed. Make sure your internet connection is working and make another search.");
+    };
+
     this.show = function () {
         container.css("display", "inline");
     };
@@ -41,14 +51,20 @@ var SelectDishView = function (container, model) {
         container.css("display", "none");
     };
 
+    this.setLoading();
+    model.getAllDishes();
+
     model.addObserver(this);
 
     this.update = function (model, obj) {
         if (obj === null) {
-            // TODO: Do something reasonable
+            this.setFailedRequest();
         } else if (typeof obj === 'object') {
-            //Something was removed or added to the menu
-            this.appendDishes(obj.Results);
+            if (obj["Results"] !== undefined) {
+                this.appendDishes(obj.Results);
+            } else {
+                this.setFailedRequest();
+            }
         }
     };
 };
