@@ -19,6 +19,7 @@ var SidebarView = function (container, model) {
         this.table.empty();
         var menu = model.getFullMenu();
         for (var i = 0; i < menu.length; i++) {
+            console.log(menu);
             var tr = $("<tr>");
             tr.append("<td>" + menu[i]['portions'] + "</td>");
             tr.append("<td>" + menu[i]['Title'] + "</td>");

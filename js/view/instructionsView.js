@@ -18,7 +18,7 @@ var InstructionsView = function (container, model) {
         col2.append(p1);
 
         var h2 = $("<h4>PREPERATION</h4>");
-        var p2 = $("<p>" + dish['Description'] + "</p>");
+        var p2 = $("<p>" + dish['Instructions'] + "</p>");
         var col3 = $("<div class='prep col-xs-6 col-sm-5 col-lg-3'>");
         col3.append(h2);
         col3.append(p2);
