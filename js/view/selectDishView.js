@@ -8,9 +8,7 @@ var SelectDishView = function (container, model) {
     this.dropdown = container.find("#dropdown");
     this.browsingPane = container.find("#browsing-pane");
 
-
-    var dishes = model.getAllDishes();
-
+    model.getAllDishes();
 
     this.appendDishes = function(dishes){
         this.browsingPane.empty();
@@ -33,14 +31,24 @@ var SelectDishView = function (container, model) {
         }
     };
 
-    this.appendDishes(dishes);
-
     this.show = function () {
         container.css("display", "inline");
-    }
+    };
 
     this.hide = function () {
         container.css("display", "none");
-    }
+    };
 
+    model.addObserver(this);
+
+    this.update = function (model, obj) {
+        if (obj === null) {
+            // TODO: Do something reasonable
+        } else if (typeof obj === 'object') {
+            //Something was removed or added to the menu
+            this.appendDishes(obj);
+        }
+
+        this.cost.text("SEK " + model.getTotalMenuPrice());
+    };
 };

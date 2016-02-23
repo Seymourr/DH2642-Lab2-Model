@@ -4,41 +4,16 @@ var SelectDishController = function (view, model, container, master) {
  		var searchText = view.searchText;
  		var type = $("#dropdown option:selected");
  		var text = searchText.val();
- 		var collection;
- 		if(type.text() === "all"){
- 			if(text.length === 0){
- 				collection = model.getAllDishes();
- 			} else {
-				collection = model.getAllFilteredDishes("appetizer", text);
-				collection = collection.add(model.getAllFilteredDishes("main dish", text));
-				collection = collection.add(model.getAllFilteredDishes("dessert", text));
-			}
- 		} else {
- 			if(text.length === 0) {
-				collection = model.getAllFilteredDishes(type.text());
-			} else {
-				collection = model.getAllFilteredDishes(type.text(), text);
-			}
-		}
 
- 		view.appendDishes(collection);
+ 		if(type.text() === "all"){
+			model.getAllDishes(text);
+ 		} else {
+			model.getAllDishes(text, type.text());
+		}
  	};
 
  	view.searchButton.click(search);
- 	$(view.dropdown).click(function() {
- 		var type = $("#dropdown option:selected");
- 		var collection;
- 		if(type.text() === "all"){
- 			collection = model.getAllDishes();
- 		} else if(type.text() === "appetizer") {
- 			collection = model.getAllFilteredDishes("appetizer");
- 		} else if(type.text() === "main dish") {
- 			collection = model.getAllFilteredDishes("main dish");
- 		} else if(type.text() === "dessert") {
- 			collection = model.getAllFilteredDishes("dessert");
- 		}
- 		view.appendDishes(collection);
- 	});
+	view.dropdown.click(search);
 
  	//Enter
  	$(document).keypress(function(e) {
@@ -49,5 +24,5 @@ var SelectDishController = function (view, model, container, master) {
 
 	view.browsingPane.on("click", ".image-box", function() {
 		master.goForward($(this).data("RecipeID"));
-	}); 
+	});
 };
