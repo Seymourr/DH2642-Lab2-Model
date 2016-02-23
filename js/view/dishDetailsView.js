@@ -21,7 +21,7 @@ var DishDetailsView = function (container, model) {
 		this.description.empty();
 		//  $('#loadingscreenSpinner').remove();
 		this.name.text(dish['Title']);
-		this.cost.text(model.getNumberOfGuests() * model.getDishPrice(dish));
+		this.cost.text((model.getNumberOfGuests() * model.getDishPrice(dish)).toFixed(2));
 		this.image.attr("src", dish['ImageURL']);
 		this.description.text(dish['Description']);
 		this.preparation.text(dish['Instructions']);
@@ -34,9 +34,9 @@ var DishDetailsView = function (container, model) {
 			if (unit === null) {
 				unit = "pc";
 			}
-			tr.append("<td>" + model.getNumberOfGuests() * currentIngredient['Quantity'] + " " + unit + "</td>");
+			tr.append("<td>" + (model.getNumberOfGuests() * currentIngredient['Quantity']).toFixed(2) + " " + unit + "</td>");
 			tr.append("<td>" + currentIngredient['Name'] + "</td>");
-			tr.append("<td> SEK " + model.getNumberOfGuests() * model.getIngredientPrice(currentIngredient) + "</td>");
+			tr.append("<td> SEK " + (model.getNumberOfGuests() * model.getIngredientPrice(currentIngredient)).toFixed(2) + "</td>");
 			this.ingredients.append(tr);
 		}
 	};

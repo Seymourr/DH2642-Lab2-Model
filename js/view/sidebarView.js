@@ -20,7 +20,7 @@ var SidebarView = function (container, model) {
 			var tr = $("<tr>");
 			tr.append("<td>" + menu[i]['portions'] + "</td>");
 			tr.append("<td>" + menu[i]['Title'] + "</td>");
-			tr.append("<td>" + menu[i]['portions'] * model.getDishPrice(menu[i]) + "</td>");
+			tr.append("<td>" + menu[i]['portions'] * model.getDishPrice(menu[i]).toFixed(2) + "</td>");
 			var div = $("<div class='trdiv'>");
 			div.append($("<button type='button' class='btn btn-danger btn-circle'><i class='glyphicon glyphicon-remove'></i></button>").data("RecipeID", menu[i]["RecipeID"]));
 			tr.append(div);
@@ -37,7 +37,7 @@ var SidebarView = function (container, model) {
 			this.updateTable();
 		}
 
-		this.cost.text("SEK " + model.getTotalMenuPrice());
+		this.cost.text("SEK " + model.getTotalMenuPrice().toFixed(2));
 	};
 
 	model.addObserver(this);

@@ -18,24 +18,21 @@ var OverviewView = function (container, model) {
 			dishref.find("img").attr("src", "images/nullImage.png");
 			dishref.find("h3").text("");
 		} else {
-			dishref.find("h6").text(dish['portions'] * model.getDishPrice(dish) + " SEK");
+			dishref.find("h6").text((dish['portions'] * model.getDishPrice(dish)).toFixed(2) + " SEK");
 			dishref.find("img").attr("src", dish['ImageURL']);
 			dishref.find("h3").text(dish['Title']);
 		}
 	};
-
-	this.setDish(this.starter, "Appetizers");
-	this.setDish(this.mainDish, "Main Dish");
-	this.setDish(this.dessert, "Desserts");
-	this.totalCost.text("Total: " + model.getTotalMenuPrice() + " SEK");
 
 	// Regardless of change, update view
 	this.update = function (model, obj) {
 		this.setDish(this.starter, "Appetizers");
 		this.setDish(this.mainDish, "Main Dish");
 		this.setDish(this.dessert, "Desserts");
-		this.totalCost.text("Total: " + model.getTotalMenuPrice() + " SEK");
+		this.totalCost.text("Total: " + model.getTotalMenuPrice().toFixed(2) + " SEK");
 	};
+
+	this.update(model);
 
 	model.addObserver(this);
 
