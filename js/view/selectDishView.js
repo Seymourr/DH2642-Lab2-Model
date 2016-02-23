@@ -39,8 +39,7 @@ var SelectDishView = function (container, model) {
 
     this.setFailedRequest = function () {
         this.browsingPane.empty();
-        this.browsingPane.append('<span class="glyphicon glyphicon-alert" aria-hidden="true"></span>');
-        this.browsingPane.append("Request failed. Make sure your internet connection is working and make another search.");
+        this.browsingPane.append('<div class="alert alert-warning" role="alert">Request failed. Make sure your internet connection is working and make another search.</div>');
     };
 
     this.show = function () {

@@ -133,12 +133,13 @@ var DinnerModel = function() {
 			context: this,
 			dataType: "json",
 			url: url,
+			timeout: 5000,
 			success: function (data) {
 				// dishes has been loaded
 				console.log(data);
 				this.notifyObservers(data);
 			},
-			fail: function () {
+			error: function () {
 				// notify that the loading failed
 				this.notifyObservers(null);
 			}
