@@ -26,8 +26,8 @@ var SelectDishView = function (container, model) {
 
             imageBox.append(img);
             imageBox.append(name);
-           // imageBox.append(description);
             course.append(imageBox);
+            course.append(description);
          
             this.browsingPane.append(course);
         }
