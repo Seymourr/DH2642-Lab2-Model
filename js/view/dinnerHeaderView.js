@@ -8,8 +8,8 @@ var DinnerHeaderView = function (container, model) {
 
 	this.numberOfPeople.text(model.getNumberOfGuests());
 
-	this.update = function (model, obj) {
-		if (typeof obj === 'number') {
+	this.update = function (model, obj, status) {
+		if (typeof obj === 'number' && status === model.numberMessage) {
 			this.numberOfPeople.text(obj);
 		}
 	};

@@ -46,8 +46,8 @@ var InstructionsView = function (container, model) {
 
 	this.updateInstructions();
 
-	this.update = function (model, obj) {
-		if (typeof obj === 'object') {
+	this.update = function (model, obj, status) {
+		if (status === model.addMessage || status === model.removeMessage) {
 			this.updateInstructions();
 		}
 	};

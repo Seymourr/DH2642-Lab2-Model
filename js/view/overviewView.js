@@ -24,15 +24,17 @@ var OverviewView = function (container, model) {
 		}
 	};
 
-	// Regardless of change, update view
-	this.update = function (model, obj) {
-		this.setDish(this.starter, "Appetizers");
-		this.setDish(this.mainDish, "Main Dish");
-		this.setDish(this.dessert, "Desserts");
-		this.totalCost.text("Total: " + model.getTotalMenuPrice().toFixed(2) + " SEK");
+	// Regardless of add/remove/new number change, update view
+	this.update = function (model, obj, status) {
+		if(status === model.numberMessage || status === model.addMessage || status === model.removeMessage){
+			this.setDish(this.starter, "Appetizers");
+			this.setDish(this.mainDish, "Main Dish");
+			this.setDish(this.dessert, "Desserts");
+			this.totalCost.text("Total: " + model.getTotalMenuPrice().toFixed(2) + " SEK");
+		}
 	};
 
-	this.update(model);
+	this.update(model, null, model.addMessage);
 
 	model.addObserver(this);
 

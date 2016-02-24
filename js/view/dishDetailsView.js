@@ -53,6 +53,8 @@ var DishDetailsView = function (container, model) {
 
 	this.setFailedRequest = function () {
 		this.ingredients.empty();
+		this.description.empty();
+		this.preparation.empty();
 		this.ingredients.append('<span class="glyphicon glyphicon-alert" aria-hidden="true"></span>');
 		this.ingredients.append("Request failed. Make sure your internet connection is working and make another search.");
 		this.description.append('<span class="glyphicon glyphicon-alert" aria-hidden="true"></span>');
@@ -62,15 +64,13 @@ var DishDetailsView = function (container, model) {
 
 	this.detailedDish = null;
 
-	this.update = function (model, obj) {
-		console.log(obj);
+	this.update = function (model, obj, status) {
 		if (typeof obj === 'number') {
 			this.appendDetailedView(this.detailedDish);
-		} else if (obj["RecipeID"] !== undefined) {
+		} else if (typeof obj === 'object' && status === model.getSingleMessage) {
 			this.detailedDish = obj;
 			this.appendDetailedView(this.detailedDish);
-		} else if (obj['Results'] === undefined) {
-			//Show error view
+		} else if (obj === null && status === model.errorMessage) {
 			this.setFailedRequest();
 		}
 	};

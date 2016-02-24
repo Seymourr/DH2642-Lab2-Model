@@ -29,14 +29,15 @@ var SidebarView = function (container, model) {
 	};
 	this.updateTable();
 
-	this.update = function (model, obj) {
-		if (typeof obj === 'number') {
+	this.update = function (model, obj, status) {
+		if (typeof obj === 'number' && status === model.numberMessage) {
 			this.guests.val(obj); //New number of guests
 		} else if (typeof obj === 'object') {
-			//Something was removed or added to the menu
-			this.updateTable();
+			if(status === model.addMessage || status === model.removeMessage) {
+				//Something was removed or added to the menu
+				this.updateTable();
+			}			
 		}
-
 		this.cost.text("SEK " + model.getTotalMenuPrice().toFixed(2));
 	};
 

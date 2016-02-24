@@ -58,11 +58,11 @@ var SelectDishView = function (container, model) {
 
 	model.addObserver(this);
 
-	this.update = function (model, obj) {
-		if (obj === null) {
+	this.update = function (model, obj, status) {
+		if (obj === null && status === model.errorMessage) {
 			this.setFailedRequest();
 		} else if (typeof obj === 'object') {
-			if (obj["Results"] !== undefined) {
+			if (status === model.getMultiMessage) {
 				this.appendDishes(obj.Results);
 			}
 		}

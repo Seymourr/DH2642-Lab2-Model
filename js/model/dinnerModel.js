@@ -4,6 +4,15 @@ var DinnerModel = function () {
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
 
+	/* Status messages follow here..*/
+	this.numberMessage = "1";
+	this.addMessage = "2";
+	this.removeMessage ="3";
+	this.getSingleMessage = "4";
+	this.getMultiMessage = "5";
+	this.errorMessage = "-1";
+	/* end of status messages */
+	
 	var numberOfGuests = 0;
 	var selectedDishes = [];
 	var listeners = [];
@@ -14,35 +23,34 @@ var DinnerModel = function () {
 	};
 
 	//Private function, notify all observers on this model
-	this.notifyObservers = function (obj) {
+	this.notifyObservers = function (obj, status) {
 		for (var i = 0; i < listeners.length; i++) {
-			listeners[i].update(this, obj);
+			listeners[i].update(this, obj, status);
 		}
 	};
 
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
 		var url = "http://api.bigoven.com/recipe/" + id + "?api_key=18f3cT02U9f6yRl3OKDpP8NA537kxYKu&pg=1&rpp=1";
-		//	console.log(url);
 		$.ajax({
 			context: this,
 			dataType: "json",
 			url: url,
+			timeout: 5000,
 			success: function (data) {
 				// dishes has been loaded
-				console.log(data);
-				this.notifyObservers(data);
+				this.notifyObservers(data, this.getSingleMessage);
 			},
-			fail: function () {
+			error: function () {
 				// notify that the loading failed
-				this.notifyObservers(null);
+				this.notifyObservers(null, this.errorMessage);
 			}
 		});
 	};
 
 	this.setNumberOfGuests = function (num) {
 		numberOfGuests = num;
-		this.notifyObservers(num);
+		this.notifyObservers(num, this.numberMessage);
 	};
 
 	// should return 
@@ -118,7 +126,7 @@ var DinnerModel = function () {
 		}
 
 		selectedDishes.push(dish);
-		this.notifyObservers(dish);
+		this.notifyObservers(dish, this.addMessage);
 	};
 
 	//Removes dish from menu
@@ -130,7 +138,7 @@ var DinnerModel = function () {
 				break;
 			}
 		}
-		this.notifyObservers(removed);
+		this.notifyObservers(removed, this.removeMessage);
 	};
 
 	this.getAllDishes = function (searchField, category) {
@@ -152,11 +160,11 @@ var DinnerModel = function () {
 			success: function (data) {
 				// dishes has been loaded
 				//	console.log(data);
-				this.notifyObservers(data);
+				this.notifyObservers(data, this.getMultiMessage);
 			},
 			error: function () {
 				// notify that the loading failed
-				this.notifyObservers(null);
+				this.notifyObservers(null, this.errorMessage);
 			}
 		});
 	};
