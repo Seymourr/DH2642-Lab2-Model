@@ -11,6 +11,9 @@ var SelectDishView = function (container, model) {
 
 	this.appendDishes = function (dishes) {
 		this.browsingPane.empty();
+		if(dishes.length === 0) {
+			this.browsingPane.append("<p>No results found...</p>");
+		}
 		for (i = 0; i < dishes.length; i++) {
 			var dish = dishes[i];
 			if (dish["Category"] === "Appetizers" || dish["Category"] === "Main Dish" || dish["Category"] === "Desserts") {
