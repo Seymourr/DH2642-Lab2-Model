@@ -21,10 +21,10 @@ var DishDetailsView = function (container, model) {
 		this.name.text(dish['Title']);
 		this.cost.text((model.getNumberOfGuests() * model.getDishPrice(dish)).toFixed(2));
 		this.image.hide();
-		this.image.attr("src", dish['ImageURL']);
 		this.image.load(function () {
 			container.find("#dish-image").show();
 		});
+		this.image.attr("src", dish['ImageURL']);
 		this.description.text(dish['Description']);
 		this.preparation.text(dish['Instructions']);
 		this.people.text(model.getNumberOfGuests());
