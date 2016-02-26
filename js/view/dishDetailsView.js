@@ -15,14 +15,16 @@ var DishDetailsView = function (container, model) {
 	this.ingredients = container.find("table");
 	this.spinner = $(new Spinner().spin().el);
 
-	//   this.detailedDish = model.getSelectedDish("starter"); //TODO: Get clicked dish.. somehow.. (REMOVE?)
-
 	this.appendDetailedView = function (dish) {
 		this.ingredients.empty();
 		this.description.empty();
 		this.name.text(dish['Title']);
 		this.cost.text((model.getNumberOfGuests() * model.getDishPrice(dish)).toFixed(2));
+		this.image.hide();
 		this.image.attr("src", dish['ImageURL']);
+		this.image.load(function () {
+			container.find("#dish-image").show();
+		});
 		this.description.text(dish['Description']);
 		this.preparation.text(dish['Instructions']);
 		this.people.text(model.getNumberOfGuests());
